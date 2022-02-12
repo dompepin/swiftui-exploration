@@ -22,6 +22,8 @@
 		B6135C5127B8436D000F36C6 /* UICompas.h in Headers */ = {isa = PBXBuildFile; fileRef = B6135C4127B8436C000F36C6 /* UICompas.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6135C5427B8436D000F36C6 /* UICompas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6135C3F27B8436C000F36C6 /* UICompas.framework */; };
 		B6135C5527B8436D000F36C6 /* UICompas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6135C3F27B8436C000F36C6 /* UICompas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B66E6BB327B844E90083D2A3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B66E6BB127B844E90083D2A3 /* README.md */; };
+		B66E6BB427B844E90083D2A3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B66E6BB227B844E90083D2A3 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +88,8 @@
 		B6135C4227B8436C000F36C6 /* UICompas.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = UICompas.docc; sourceTree = "<group>"; };
 		B6135C4827B8436C000F36C6 /* UICompasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UICompasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6135C4F27B8436D000F36C6 /* UICompasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICompasTests.swift; sourceTree = "<group>"; };
+		B66E6BB127B844E90083D2A3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B66E6BB227B844E90083D2A3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,8 @@
 		B6135BF127B808F0000F36C6 = {
 			isa = PBXGroup;
 			children = (
+				B66E6BB227B844E90083D2A3 /* LICENSE */,
+				B66E6BB127B844E90083D2A3 /* README.md */,
 				B6135BFC27B808F0000F36C6 /* SwiftUIExploration */,
 				B6135C0D27B808F2000F36C6 /* SwiftUIExplorationTests */,
 				B6135C4027B8436C000F36C6 /* UICompas */,
@@ -380,7 +386,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B66E6BB327B844E90083D2A3 /* README.md in Resources */,
 				B6135C0527B808F1000F36C6 /* Preview Assets.xcassets in Resources */,
+				B66E6BB427B844E90083D2A3 /* LICENSE in Resources */,
 				B6135C0227B808F1000F36C6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

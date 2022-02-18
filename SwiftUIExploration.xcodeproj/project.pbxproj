@@ -12,18 +12,24 @@
 		B6135C0227B808F1000F36C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6135C0127B808F1000F36C6 /* Assets.xcassets */; };
 		B6135C0527B808F1000F36C6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6135C0427B808F1000F36C6 /* Preview Assets.xcassets */; };
 		B6135C0F27B808F2000F36C6 /* SwiftUIExplorationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C0E27B808F2000F36C6 /* SwiftUIExplorationTests.swift */; };
-		B6135C2A27B80A0F000F36C6 /* PulsingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C2927B80A0F000F36C6 /* PulsingActivityIndicator.swift */; };
 		B6135C2E27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */; };
 		B6135C3127B8113D000F36C6 /* MenuItemViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */; };
-		B6135C3927B83ECE000F36C6 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C3827B83ECE000F36C6 /* Triangle.swift */; };
-		B6135C4327B8436C000F36C6 /* UICompas.docc in Sources */ = {isa = PBXBuildFile; fileRef = B6135C4227B8436C000F36C6 /* UICompas.docc */; };
-		B6135C4927B8436D000F36C6 /* UICompas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6135C3F27B8436C000F36C6 /* UICompas.framework */; };
-		B6135C5027B8436D000F36C6 /* UICompasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C4F27B8436D000F36C6 /* UICompasTests.swift */; };
-		B6135C5127B8436D000F36C6 /* UICompas.h in Headers */ = {isa = PBXBuildFile; fileRef = B6135C4127B8436C000F36C6 /* UICompas.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B6135C5427B8436D000F36C6 /* UICompas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6135C3F27B8436C000F36C6 /* UICompas.framework */; };
-		B6135C5527B8436D000F36C6 /* UICompas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B6135C3F27B8436C000F36C6 /* UICompas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B657058727C143AE00398427 /* View+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058627C143AE00398427 /* View+Log.swift */; };
+		B657058927C1C56900398427 /* DocumentPickerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058827C1C56900398427 /* DocumentPickerExampleView.swift */; };
+		B657058E27C3EA4D00398427 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058D27C3EA4D00398427 /* View+CornerRadius.swift */; };
+		B65D932027BB5E7300314E66 /* BottomSheetExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65D931F27BB5E7300314E66 /* BottomSheetExampleView.swift */; };
+		B65D932A27BC9FD300314E66 /* UICompass.docc in Sources */ = {isa = PBXBuildFile; fileRef = B65D932927BC9FD300314E66 /* UICompass.docc */; };
+		B65D933027BC9FD300314E66 /* UICompass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65D932627BC9FD300314E66 /* UICompass.framework */; };
+		B65D933727BC9FD300314E66 /* UICompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65D933627BC9FD300314E66 /* UICompassTests.swift */; };
+		B65D933827BC9FD300314E66 /* UICompass.h in Headers */ = {isa = PBXBuildFile; fileRef = B65D932827BC9FD300314E66 /* UICompass.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B65D933B27BC9FD300314E66 /* UICompass.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65D932627BC9FD300314E66 /* UICompass.framework */; };
+		B65D933C27BC9FD300314E66 /* UICompass.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B65D932627BC9FD300314E66 /* UICompass.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B66E6BB327B844E90083D2A3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B66E6BB127B844E90083D2A3 /* README.md */; };
 		B66E6BB427B844E90083D2A3 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B66E6BB227B844E90083D2A3 /* LICENSE */; };
+		B689204927BCA01E00EED6A0 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204427BCA01E00EED6A0 /* BottomSheet.swift */; };
+		B689204A27BCA01E00EED6A0 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204627BCA01E00EED6A0 /* Triangle.swift */; };
+		B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */; };
+		B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204D27BDFA8F00EED6A0 /* View+Size.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,26 +40,26 @@
 			remoteGlobalIDString = B6135BF927B808F0000F36C6;
 			remoteInfo = SwiftUIExploration;
 		};
-		B6135C4A27B8436D000F36C6 /* PBXContainerItemProxy */ = {
+		B65D933127BC9FD300314E66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B6135BF227B808F0000F36C6 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B6135C3E27B8436C000F36C6;
-			remoteInfo = UICompas;
+			remoteGlobalIDString = B65D932527BC9FD300314E66;
+			remoteInfo = UICompass;
 		};
-		B6135C4C27B8436D000F36C6 /* PBXContainerItemProxy */ = {
+		B65D933327BC9FD300314E66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B6135BF227B808F0000F36C6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B6135BF927B808F0000F36C6;
 			remoteInfo = SwiftUIExploration;
 		};
-		B6135C5227B8436D000F36C6 /* PBXContainerItemProxy */ = {
+		B65D933927BC9FD300314E66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B6135BF227B808F0000F36C6 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B6135C3E27B8436C000F36C6;
-			remoteInfo = UICompas;
+			remoteGlobalIDString = B65D932527BC9FD300314E66;
+			remoteInfo = UICompass;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -64,7 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B6135C5527B8436D000F36C6 /* UICompas.framework in Embed Frameworks */,
+				B65D933C27BC9FD300314E66 /* UICompass.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,17 +85,23 @@
 		B6135C0427B808F1000F36C6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6135C0A27B808F2000F36C6 /* SwiftUIExplorationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUIExplorationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6135C0E27B808F2000F36C6 /* SwiftUIExplorationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExplorationTests.swift; sourceTree = "<group>"; };
-		B6135C2927B80A0F000F36C6 /* PulsingActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicator.swift; sourceTree = "<group>"; };
 		B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicatorExampleView.swift; sourceTree = "<group>"; };
 		B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewLink.swift; sourceTree = "<group>"; };
-		B6135C3827B83ECE000F36C6 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
-		B6135C3F27B8436C000F36C6 /* UICompas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICompas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6135C4127B8436C000F36C6 /* UICompas.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICompas.h; sourceTree = "<group>"; };
-		B6135C4227B8436C000F36C6 /* UICompas.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = UICompas.docc; sourceTree = "<group>"; };
-		B6135C4827B8436C000F36C6 /* UICompasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UICompasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B6135C4F27B8436D000F36C6 /* UICompasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICompasTests.swift; sourceTree = "<group>"; };
+		B657058627C143AE00398427 /* View+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Log.swift"; sourceTree = "<group>"; };
+		B657058827C1C56900398427 /* DocumentPickerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerExampleView.swift; sourceTree = "<group>"; };
+		B657058D27C3EA4D00398427 /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
+		B65D931F27BB5E7300314E66 /* BottomSheetExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetExampleView.swift; sourceTree = "<group>"; };
+		B65D932627BC9FD300314E66 /* UICompass.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICompass.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B65D932827BC9FD300314E66 /* UICompass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICompass.h; sourceTree = "<group>"; };
+		B65D932927BC9FD300314E66 /* UICompass.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = UICompass.docc; sourceTree = "<group>"; };
+		B65D932F27BC9FD300314E66 /* UICompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UICompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B65D933627BC9FD300314E66 /* UICompassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICompassTests.swift; sourceTree = "<group>"; };
 		B66E6BB127B844E90083D2A3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B66E6BB227B844E90083D2A3 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B689204427BCA01E00EED6A0 /* BottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		B689204627BCA01E00EED6A0 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
+		B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicator.swift; sourceTree = "<group>"; };
+		B689204D27BDFA8F00EED6A0 /* View+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Size.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6135C5427B8436D000F36C6 /* UICompas.framework in Frameworks */,
+				B65D933B27BC9FD300314E66 /* UICompass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,18 +120,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6135C3C27B8436C000F36C6 /* Frameworks */ = {
+		B65D932327BC9FD300314E66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6135C4527B8436C000F36C6 /* Frameworks */ = {
+		B65D932C27BC9FD300314E66 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6135C4927B8436D000F36C6 /* UICompas.framework in Frameworks */,
+				B65D933027BC9FD300314E66 /* UICompass.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,8 +145,8 @@
 				B66E6BB127B844E90083D2A3 /* README.md */,
 				B6135BFC27B808F0000F36C6 /* SwiftUIExploration */,
 				B6135C0D27B808F2000F36C6 /* SwiftUIExplorationTests */,
-				B6135C4027B8436C000F36C6 /* UICompas */,
-				B6135C4E27B8436D000F36C6 /* UICompasTests */,
+				B65D932727BC9FD300314E66 /* UICompass */,
+				B65D933527BC9FD300314E66 /* UICompassTests */,
 				B6135BFB27B808F0000F36C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,8 +156,8 @@
 			children = (
 				B6135BFA27B808F0000F36C6 /* SwiftUIExploration.app */,
 				B6135C0A27B808F2000F36C6 /* SwiftUIExplorationTests.xctest */,
-				B6135C3F27B8436C000F36C6 /* UICompas.framework */,
-				B6135C4827B8436C000F36C6 /* UICompasTests.xctest */,
+				B65D932627BC9FD300314E66 /* UICompass.framework */,
+				B65D932F27BC9FD300314E66 /* UICompassTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,17 +189,10 @@
 			path = SwiftUIExplorationTests;
 			sourceTree = "<group>";
 		};
-		B6135C2827B809F5000F36C6 /* ActivityIndicators */ = {
-			isa = PBXGroup;
-			children = (
-				B6135C2927B80A0F000F36C6 /* PulsingActivityIndicator.swift */,
-			);
-			path = ActivityIndicators;
-			sourceTree = "<group>";
-		};
 		B6135C2B27B810A6000F36C6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B65D931E27BB5E5C00314E66 /* Sheets */,
 				B6135C2C27B810AE000F36C6 /* ActivityIndicators */,
 			);
 			path = Examples;
@@ -211,49 +216,86 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		B6135C3727B83EB4000F36C6 /* Shapes */ = {
+		B65D931E27BB5E5C00314E66 /* Sheets */ = {
 			isa = PBXGroup;
 			children = (
-				B6135C3827B83ECE000F36C6 /* Triangle.swift */,
+				B65D931F27BB5E7300314E66 /* BottomSheetExampleView.swift */,
+				B657058827C1C56900398427 /* DocumentPickerExampleView.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		B65D932727BC9FD300314E66 /* UICompass */ = {
+			isa = PBXGroup;
+			children = (
+				B689204227BCA01E00EED6A0 /* Modules */,
+				B65D932827BC9FD300314E66 /* UICompass.h */,
+				B65D932927BC9FD300314E66 /* UICompass.docc */,
+			);
+			path = UICompass;
+			sourceTree = "<group>";
+		};
+		B65D933527BC9FD300314E66 /* UICompassTests */ = {
+			isa = PBXGroup;
+			children = (
+				B65D933627BC9FD300314E66 /* UICompassTests.swift */,
+			);
+			path = UICompassTests;
+			sourceTree = "<group>";
+		};
+		B689204227BCA01E00EED6A0 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B689204C27BDF96C00EED6A0 /* Extensions */,
+				B689204327BCA01E00EED6A0 /* Sheets */,
+				B689204527BCA01E00EED6A0 /* Shapes */,
+				B689204727BCA01E00EED6A0 /* ActivityIndicators */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B689204327BCA01E00EED6A0 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				B689204427BCA01E00EED6A0 /* BottomSheet.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		B689204527BCA01E00EED6A0 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				B689204627BCA01E00EED6A0 /* Triangle.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
 		};
-		B6135C4027B8436C000F36C6 /* UICompas */ = {
+		B689204727BCA01E00EED6A0 /* ActivityIndicators */ = {
 			isa = PBXGroup;
 			children = (
-				B6135C5D27B84386000F36C6 /* Modules */,
-				B6135C4127B8436C000F36C6 /* UICompas.h */,
-				B6135C4227B8436C000F36C6 /* UICompas.docc */,
+				B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */,
 			);
-			path = UICompas;
+			path = ActivityIndicators;
 			sourceTree = "<group>";
 		};
-		B6135C4E27B8436D000F36C6 /* UICompasTests */ = {
+		B689204C27BDF96C00EED6A0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B6135C4F27B8436D000F36C6 /* UICompasTests.swift */,
+				B657058627C143AE00398427 /* View+Log.swift */,
+				B689204D27BDFA8F00EED6A0 /* View+Size.swift */,
+				B657058D27C3EA4D00398427 /* View+CornerRadius.swift */,
 			);
-			path = UICompasTests;
-			sourceTree = "<group>";
-		};
-		B6135C5D27B84386000F36C6 /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				B6135C2827B809F5000F36C6 /* ActivityIndicators */,
-				B6135C3727B83EB4000F36C6 /* Shapes */,
-			);
-			path = Modules;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		B6135C3A27B8436C000F36C6 /* Headers */ = {
+		B65D932127BC9FD300314E66 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6135C5127B8436D000F36C6 /* UICompas.h in Headers */,
+				B65D933827BC9FD300314E66 /* UICompass.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +314,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B6135C5327B8436D000F36C6 /* PBXTargetDependency */,
+				B65D933A27BC9FD300314E66 /* PBXTargetDependency */,
 			);
 			name = SwiftUIExploration;
 			productName = SwiftUIExploration;
@@ -297,41 +339,41 @@
 			productReference = B6135C0A27B808F2000F36C6 /* SwiftUIExplorationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B6135C3E27B8436C000F36C6 /* UICompas */ = {
+		B65D932527BC9FD300314E66 /* UICompass */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B6135C5627B8436D000F36C6 /* Build configuration list for PBXNativeTarget "UICompas" */;
+			buildConfigurationList = B65D933D27BC9FD300314E66 /* Build configuration list for PBXNativeTarget "UICompass" */;
 			buildPhases = (
-				B6135C3A27B8436C000F36C6 /* Headers */,
-				B6135C3B27B8436C000F36C6 /* Sources */,
-				B6135C3C27B8436C000F36C6 /* Frameworks */,
-				B6135C3D27B8436C000F36C6 /* Resources */,
+				B65D932127BC9FD300314E66 /* Headers */,
+				B65D932227BC9FD300314E66 /* Sources */,
+				B65D932327BC9FD300314E66 /* Frameworks */,
+				B65D932427BC9FD300314E66 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = UICompas;
-			productName = UICompas;
-			productReference = B6135C3F27B8436C000F36C6 /* UICompas.framework */;
+			name = UICompass;
+			productName = UICompass;
+			productReference = B65D932627BC9FD300314E66 /* UICompass.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B6135C4727B8436C000F36C6 /* UICompasTests */ = {
+		B65D932E27BC9FD300314E66 /* UICompassTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B6135C5A27B8436D000F36C6 /* Build configuration list for PBXNativeTarget "UICompasTests" */;
+			buildConfigurationList = B65D934027BC9FD300314E66 /* Build configuration list for PBXNativeTarget "UICompassTests" */;
 			buildPhases = (
-				B6135C4427B8436C000F36C6 /* Sources */,
-				B6135C4527B8436C000F36C6 /* Frameworks */,
-				B6135C4627B8436C000F36C6 /* Resources */,
+				B65D932B27BC9FD300314E66 /* Sources */,
+				B65D932C27BC9FD300314E66 /* Frameworks */,
+				B65D932D27BC9FD300314E66 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B6135C4B27B8436D000F36C6 /* PBXTargetDependency */,
-				B6135C4D27B8436D000F36C6 /* PBXTargetDependency */,
+				B65D933227BC9FD300314E66 /* PBXTargetDependency */,
+				B65D933427BC9FD300314E66 /* PBXTargetDependency */,
 			);
-			name = UICompasTests;
-			productName = UICompasTests;
-			productReference = B6135C4827B8436C000F36C6 /* UICompasTests.xctest */;
+			name = UICompassTests;
+			productName = UICompassTests;
+			productReference = B65D932F27BC9FD300314E66 /* UICompassTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -351,10 +393,10 @@
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = B6135BF927B808F0000F36C6;
 					};
-					B6135C3E27B8436C000F36C6 = {
+					B65D932527BC9FD300314E66 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
-					B6135C4727B8436C000F36C6 = {
+					B65D932E27BC9FD300314E66 = {
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = B6135BF927B808F0000F36C6;
 					};
@@ -375,8 +417,8 @@
 			targets = (
 				B6135BF927B808F0000F36C6 /* SwiftUIExploration */,
 				B6135C0927B808F2000F36C6 /* SwiftUIExplorationTests */,
-				B6135C3E27B8436C000F36C6 /* UICompas */,
-				B6135C4727B8436C000F36C6 /* UICompasTests */,
+				B65D932527BC9FD300314E66 /* UICompass */,
+				B65D932E27BC9FD300314E66 /* UICompassTests */,
 			);
 		};
 /* End PBXProject section */
@@ -400,14 +442,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6135C3D27B8436C000F36C6 /* Resources */ = {
+		B65D932427BC9FD300314E66 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6135C4627B8436C000F36C6 /* Resources */ = {
+		B65D932D27BC9FD300314E66 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -421,11 +463,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6135C2A27B80A0F000F36C6 /* PulsingActivityIndicator.swift in Sources */,
+				B65D932027BB5E7300314E66 /* BottomSheetExampleView.swift in Sources */,
 				B6135C0027B808F0000F36C6 /* MainView.swift in Sources */,
 				B6135BFE27B808F0000F36C6 /* SwiftUIExplorationApp.swift in Sources */,
-				B6135C3927B83ECE000F36C6 /* Triangle.swift in Sources */,
 				B6135C2E27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift in Sources */,
+				B657058927C1C56900398427 /* DocumentPickerExampleView.swift in Sources */,
 				B6135C3127B8113D000F36C6 /* MenuItemViewLink.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,19 +480,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6135C3B27B8436C000F36C6 /* Sources */ = {
+		B65D932227BC9FD300314E66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6135C4327B8436C000F36C6 /* UICompas.docc in Sources */,
+				B657058E27C3EA4D00398427 /* View+CornerRadius.swift in Sources */,
+				B689204A27BCA01E00EED6A0 /* Triangle.swift in Sources */,
+				B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */,
+				B689204927BCA01E00EED6A0 /* BottomSheet.swift in Sources */,
+				B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */,
+				B65D932A27BC9FD300314E66 /* UICompass.docc in Sources */,
+				B657058727C143AE00398427 /* View+Log.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6135C4427B8436C000F36C6 /* Sources */ = {
+		B65D932B27BC9FD300314E66 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6135C5027B8436D000F36C6 /* UICompasTests.swift in Sources */,
+				B65D933727BC9FD300314E66 /* UICompassTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,20 +510,20 @@
 			target = B6135BF927B808F0000F36C6 /* SwiftUIExploration */;
 			targetProxy = B6135C0B27B808F2000F36C6 /* PBXContainerItemProxy */;
 		};
-		B6135C4B27B8436D000F36C6 /* PBXTargetDependency */ = {
+		B65D933227BC9FD300314E66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B6135C3E27B8436C000F36C6 /* UICompas */;
-			targetProxy = B6135C4A27B8436D000F36C6 /* PBXContainerItemProxy */;
+			target = B65D932527BC9FD300314E66 /* UICompass */;
+			targetProxy = B65D933127BC9FD300314E66 /* PBXContainerItemProxy */;
 		};
-		B6135C4D27B8436D000F36C6 /* PBXTargetDependency */ = {
+		B65D933427BC9FD300314E66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B6135BF927B808F0000F36C6 /* SwiftUIExploration */;
-			targetProxy = B6135C4C27B8436D000F36C6 /* PBXContainerItemProxy */;
+			targetProxy = B65D933327BC9FD300314E66 /* PBXContainerItemProxy */;
 		};
-		B6135C5327B8436D000F36C6 /* PBXTargetDependency */ = {
+		B65D933A27BC9FD300314E66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B6135C3E27B8436C000F36C6 /* UICompas */;
-			targetProxy = B6135C5227B8436D000F36C6 /* PBXContainerItemProxy */;
+			target = B65D932527BC9FD300314E66 /* UICompass */;
+			targetProxy = B65D933927BC9FD300314E66 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -599,6 +647,7 @@
 		B6135C1F27B808F2000F36C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -628,6 +677,7 @@
 		B6135C2027B808F2000F36C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -694,7 +744,7 @@
 			};
 			name = Release;
 		};
-		B6135C5727B8436D000F36C6 /* Debug */ = {
+		B65D933E27BC9FD300314E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -713,7 +763,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompass;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -724,7 +774,7 @@
 			};
 			name = Debug;
 		};
-		B6135C5827B8436D000F36C6 /* Release */ = {
+		B65D933F27BC9FD300314E66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -743,7 +793,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompass;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -754,7 +804,7 @@
 			};
 			name = Release;
 		};
-		B6135C5B27B8436D000F36C6 /* Debug */ = {
+		B65D934127BC9FD300314E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -763,7 +813,7 @@
 				DEVELOPMENT_TEAM = 2S636NTM9W;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompasTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompassTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -772,7 +822,7 @@
 			};
 			name = Debug;
 		};
-		B6135C5C27B8436D000F36C6 /* Release */ = {
+		B65D934227BC9FD300314E66 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -781,7 +831,7 @@
 				DEVELOPMENT_TEAM = 2S636NTM9W;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompasTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dompepin.UICompassTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -820,20 +870,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B6135C5627B8436D000F36C6 /* Build configuration list for PBXNativeTarget "UICompas" */ = {
+		B65D933D27BC9FD300314E66 /* Build configuration list for PBXNativeTarget "UICompass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B6135C5727B8436D000F36C6 /* Debug */,
-				B6135C5827B8436D000F36C6 /* Release */,
+				B65D933E27BC9FD300314E66 /* Debug */,
+				B65D933F27BC9FD300314E66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B6135C5A27B8436D000F36C6 /* Build configuration list for PBXNativeTarget "UICompasTests" */ = {
+		B65D934027BC9FD300314E66 /* Build configuration list for PBXNativeTarget "UICompassTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B6135C5B27B8436D000F36C6 /* Debug */,
-				B6135C5C27B8436D000F36C6 /* Release */,
+				B65D934127BC9FD300314E66 /* Debug */,
+				B65D934227BC9FD300314E66 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

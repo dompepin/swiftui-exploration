@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Activity Indicator that pulses/fades objects in sequence. You can pulse any type of view: Shapes, Images, Text, etc.
 public struct PulsingActivityIndicator: View {
     
     // MARK: Config
@@ -75,7 +76,7 @@ public struct PulsingActivityIndicator: View {
 // MARK: Examples
 
 
-extension PulsingActivityIndicator.Configuration {
+public extension PulsingActivityIndicator.Configuration {
     static let example_three_shapes: PulsingActivityIndicator.Configuration = .init(views: [AnyView(Circle().fill(Color.red).frame(width:20, height:20)),
                                                                                             AnyView(Triangle().fill(Color.blue).frame(width:20, height:20)),
                                                                                             AnyView(Rectangle().fill(Color.yellow).frame(width:20, height:20))

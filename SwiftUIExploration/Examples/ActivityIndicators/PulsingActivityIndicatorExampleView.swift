@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import UICompass
 
 struct PulsingActivityIndicatorExampleView: View {
+    
+    // MARK: Body
+    
     var body: some View {
         VStack (alignment: .center, spacing: 24) {
             PulsingActivityIndicator(config: .example_three_shapes)
@@ -22,6 +26,8 @@ struct PulsingActivityIndicatorExampleView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+// MARK: Preview
 
 struct PulsingActivityIndicatorExampleView_Previews: PreviewProvider {
     static var previews: some View {

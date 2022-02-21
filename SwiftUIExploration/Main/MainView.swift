@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    // MARK: Body
+    
     var body: some View {
         NavigationView {
             List {
+                MenuItemViewLink("Bottom Sheets") {
+                    BottomSheetExampleView()
+                }
                 MenuItemViewLink("Pulsing Activity Indicators") {
                     PulsingActivityIndicatorExampleView()
                 }
@@ -20,9 +26,10 @@ struct MainView: View {
             .navigationBarTitleDisplayMode(.large
             )
         }
-        
     }
 }
+
+// MARK: Preview
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {

@@ -1,14 +1,14 @@
 //
-//  UICompasTests.swift
-//  UICompasTests
+//  UICompassTests.swift
+//  UICompassTests
 //
-//  Created by Dominic Pepin on 2022-02-12.
+//  Created by Dominic Pepin on 2022-02-15.
 //
 
 import XCTest
-@testable import UICompas
+@testable import UICompass
 
-class UICompasTests: XCTestCase {
+class UICompassTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

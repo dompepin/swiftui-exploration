@@ -16,7 +16,7 @@ public struct BottomSheet<Content>: View where Content: View {
     
     @Binding private var isPresented: Bool
     @State private var sheetSize: CGSize = .zero
-    private var content: () -> Content
+    private let content: () -> Content
     
     // MARK: Body
     

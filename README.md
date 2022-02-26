@@ -11,6 +11,18 @@ Left to do (WIP):
 
 ![Bottom Sheet Example](Documentation/ExamplesImages/BottomSheetExample.gif) 
 
+### Buttons
+
+Rectangle button with configurable parameters:
+* Foreground Color
+* Background Color
+* Border Color
+* Border Width
+* Corner Radius
+* Inner Padding
+
+![Button Example](Documentation/ExamplesImages/ButtonsExample.jpg)
+
 ### Pulsing Activity Indicator
 
 Activity Indicator that pulses/fades objects in sequence. You can pulse any type of view: Shapes, Images, Text, etc.

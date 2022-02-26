@@ -17,6 +17,9 @@ struct MainView: View {
                 MenuItemViewLink("Bottom Sheets") {
                     BottomSheetExampleView()
                 }
+                MenuItemViewLink("Buttons") {
+                    ButtonsExampleView()
+                }
                 MenuItemViewLink("Pulsing Activity Indicators") {
                     PulsingActivityIndicatorExampleView()
                 }

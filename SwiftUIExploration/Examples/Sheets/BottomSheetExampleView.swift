@@ -18,18 +18,33 @@ struct BottomSheetExampleView: View {
     // MARK: Body
     
     var body: some View {
-        ZStack {
-            VStack (alignment: .center, spacing: 16) {
-                Button("Apple Sheet") {
+        ScrollView {
+            VStack (alignment: .leading, spacing: 16) {
+                EyebrowText("Apple Examples")
+                Button {
                     isActionSheetPresented.toggle()
+                } label: {
+                    Text("Action Sheet")
+                        .frame(maxWidth: .infinity)
                 }
-                Button("Custom Sheet") {
+                .buttonStyle(ButtonStyle.primary)
+                
+                
+                EyebrowText("Custom Examples")
+                    .padding(.top, 16)
+                Button {
                     isCustomSheetPresented.toggle()
+                } label: {
+                    Text("Bottom Sheet")
+                        .frame(maxWidth: .infinity)
                 }
+                .buttonStyle(ButtonStyle.primary)
+                Spacer()
             }
+            .padding()
         }
         .customSheet(isPresented: $isCustomSheetPresented) {
-             return DocumentPickerExampleView(isPresented: $isCustomSheetPresented)
+            return DocumentPickerExampleView(isPresented: $isCustomSheetPresented)
         }
         .actionSheet(isPresented: $isActionSheetPresented) {
             return ActionSheet(title: Text("Select your attachment"),
@@ -38,7 +53,7 @@ struct BottomSheetExampleView: View {
                                 .default(Text("Choose a document")),
                                 .cancel(Text("Cancel"))
                                ])
-            
+
         }
     }
 }

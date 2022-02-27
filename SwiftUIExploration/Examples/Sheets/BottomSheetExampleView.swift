@@ -43,7 +43,7 @@ struct BottomSheetExampleView: View {
             }
             .padding()
         }
-        .customSheet(isPresented: $isCustomSheetPresented) {
+        .bottomSheet(isPresented: $isCustomSheetPresented, safeAreaColor: Color.white) {
             return DocumentPickerExampleView(isPresented: $isCustomSheetPresented)
         }
         .actionSheet(isPresented: $isActionSheetPresented) {

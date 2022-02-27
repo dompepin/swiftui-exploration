@@ -22,6 +22,7 @@ public struct BottomSheet<Content>: View where Content: View {
     @Binding private var isPresented: Bool
     @State private var sheetSize: CGSize = .zero
     private let content: () -> Content
+    private let safeAreaColor: Color
     
     // MARK: Body
     
@@ -29,10 +30,14 @@ public struct BottomSheet<Content>: View where Content: View {
         GeometryReader { geometry in
             VStack{
                 Spacer()
-                self.content()
-                    .frame(width: geometry.size.width)
-                    .getSize($sheetSize)
-                    .offset(y: isPresented ? 0 : sheetSize.height + geometry.safeAreaInsets.bottom)
+                VStack (alignment: .center, spacing: 0){
+                    self.content()
+                        .frame(width: geometry.size.width)
+                        .getSize($sheetSize)
+                    self.safeAreaColor
+                        .frame(height: geometry.safeAreaInsets.bottom)
+                }
+                .offset(y: isPresented ? geometry.safeAreaInsets.bottom : sheetSize.height + geometry.safeAreaInsets.bottom * 2)
             }
         }
         
@@ -56,9 +61,11 @@ public struct BottomSheet<Content>: View where Content: View {
     ///   - isPresented: A binding to a Boolean value that determines whether
     ///     to present the bottom sheet that you create in the `content` closure.
     ///   - content: A closure returning the `View` to present.
-    public init(isPresented: Binding<Bool>, content: @escaping () -> Content) {
+    ///   - safeAreaColor: Color that is show over the bottomSafeArea.
+    public init(isPresented: Binding<Bool>, safeAreaColor: Color, content: @escaping () -> Content) {
         self._isPresented = isPresented
         self.content = content
+        self.safeAreaColor = safeAreaColor
     }
 }
 
@@ -71,10 +78,13 @@ public extension View {
     ///   - isPresented: A binding to a Boolean value that determines whether
     ///     to present the bottom sheet that you create in the `content` closure.
     ///   - content: A closure returning the `View` to present.
-    func customSheet<Content: View>(isPresented: Binding<Bool>, content: @escaping () -> Content) -> some View {
+    ///   - safeAreaColor: Color that is show over the bottomSafeArea.
+    func bottomSheet<Content: View>(isPresented: Binding<Bool>,
+                                    safeAreaColor: Color,
+                                    content: @escaping () -> Content) -> some View {
         return ZStack {
             self
-            BottomSheet(isPresented: isPresented, content: content)
+            BottomSheet(isPresented: isPresented, safeAreaColor: safeAreaColor, content: content)
         }
     }
 }
@@ -82,12 +92,13 @@ public extension View {
 
 // MARK: Preview
 
-struct CustomSheet_Previews: PreviewProvider {
+struct BottomSheet_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Button {} label: { Text("Tap Me") }
         }
-        .customSheet(isPresented: .constant(true)) {
+        .bottomSheet(isPresented: .constant(true),
+                     safeAreaColor: .green) {
             VStack {
                 HStack {
                     Spacer()
@@ -104,7 +115,6 @@ struct CustomSheet_Previews: PreviewProvider {
             }
             .frame(height: 100)
             .background(Color.green)
-            
         }
     }
 }

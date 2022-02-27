@@ -12,6 +12,11 @@ import SwiftUI
 /// Presents a custom view from the bottom of the screen.
 public struct BottomSheet<Content>: View where Content: View {
     
+    // MARK: Constants
+    
+    private let dismissibleViewColor: Color = .black
+    private let dismissibleViewOpacity: CGFloat = 0.25
+    
     // MARK: Properties
     
     @Binding private var isPresented: Bool
@@ -28,10 +33,19 @@ public struct BottomSheet<Content>: View where Content: View {
                     .frame(width: geometry.size.width)
                     .getSize($sheetSize)
                     .offset(y: isPresented ? 0 : sheetSize.height + geometry.safeAreaInsets.bottom)
-                    .animation(Animation.easeInOut(duration: 0.3),
-                               value: isPresented)
             }
         }
+        
+        .background(
+            dismissibleViewColor
+                .opacity(isPresented ? dismissibleViewOpacity : 0.0)
+                .onTapGesture {
+                    isPresented.toggle()
+                }
+                .ignoresSafeArea()
+        )
+        .animation(Animation.easeInOut(duration: 0.3),
+                   value: isPresented)
     }
     
     // MARK: Lifecycle
@@ -79,7 +93,7 @@ struct CustomSheet_Previews: PreviewProvider {
                     Spacer()
                     Button {} label: {
                         Image(systemName: "xmark")
-                        .padding()
+                            .padding()
                     }
                 }
                 HStack{

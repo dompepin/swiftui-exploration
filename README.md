@@ -5,9 +5,7 @@
 Sheet that presents a custom view from the bottom of the screen. 
 
 Left to do (WIP):
-- Dismissible Background
 - Ability to drag the view down
-- Fix the safe area rendering
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/BottomSheetExample.gif" width="250">
 
@@ -21,7 +19,7 @@ Rectangle button with configurable parameters:
 * Corner Radius
 * Inner Padding
 
-<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/ButtonsExample.jpg" width="250">
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/ButtonsExample.gif" width="250">
 
 ### Pulsing Activity Indicator
 

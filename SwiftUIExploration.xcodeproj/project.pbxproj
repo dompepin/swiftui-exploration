@@ -37,6 +37,12 @@
 		B689204A27BCA01E00EED6A0 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204627BCA01E00EED6A0 /* Triangle.swift */; };
 		B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */; };
 		B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204D27BDFA8F00EED6A0 /* View+Size.swift */; };
+		B6C5A62E27DCFDD8007FDF0E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6C5A62D27DCFDD8007FDF0E /* SnapshotTesting */; };
+		B6C5A63127DCFE60007FDF0E /* RectangleButtonStyleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */; };
+		B6C5A63A27DD06C1007FDF0E /* AssertSnapshot+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */; };
+		B6C5A64927DD15A4007FDF0E /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = B6C5A64827DD15A4007FDF0E /* __Snapshots__ */; };
+		B6C5A64B27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */; };
+		B6D3B51027DCECFF00A9E8B8 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6D3B50F27DCECFF00A9E8B8 /* SnapshotTesting */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +122,10 @@
 		B689204627BCA01E00EED6A0 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicator.swift; sourceTree = "<group>"; };
 		B689204D27BDFA8F00EED6A0 /* View+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Size.swift"; sourceTree = "<group>"; };
+		B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButtonStyleUITests.swift; sourceTree = "<group>"; };
+		B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssertSnapshot+Extensions.swift"; sourceTree = "<group>"; };
+		B6C5A64827DD15A4007FDF0E /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
+		B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConerRadiusUITests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6D3B51027DCECFF00A9E8B8 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65D933027BC9FD300314E66 /* UICompass.framework in Frameworks */,
+				B6C5A62E27DCFDD8007FDF0E /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +174,7 @@
 				B65D932727BC9FD300314E66 /* UICompass */,
 				B65D933527BC9FD300314E66 /* UICompassTests */,
 				B6135BFB27B808F0000F36C6 /* Products */,
+				B6C5A62C27DCFDD8007FDF0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,9 +247,10 @@
 		B657058F27C45A7900398427 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				B657059527C88AF600398427 /* RectangleButtonStyle.swift */,
 				B657059F27CA8BE100398427 /* ButtonStateColor.swift */,
 				B65705A127CA8C1600398427 /* ButtonStateColorTests.swift */,
+				B657059527C88AF600398427 /* RectangleButtonStyle.swift */,
+				B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -291,6 +305,8 @@
 		B65D933527BC9FD300314E66 /* UICompassTests */ = {
 			isa = PBXGroup;
 			children = (
+				B6C5A64827DD15A4007FDF0E /* __Snapshots__ */,
+				B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */,
 			);
 			path = UICompassTests;
 			sourceTree = "<group>";
@@ -337,8 +353,16 @@
 				B657058627C143AE00398427 /* View+Log.swift */,
 				B689204D27BDFA8F00EED6A0 /* View+Size.swift */,
 				B657058D27C3EA4D00398427 /* View+CornerRadius.swift */,
+				B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B6C5A62C27DCFDD8007FDF0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,6 +412,9 @@
 				B6135C0C27B808F2000F36C6 /* PBXTargetDependency */,
 			);
 			name = SwiftUIExplorationTests;
+			packageProductDependencies = (
+				B6D3B50F27DCECFF00A9E8B8 /* SnapshotTesting */,
+			);
 			productName = SwiftUIExplorationTests;
 			productReference = B6135C0A27B808F2000F36C6 /* SwiftUIExplorationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -425,6 +452,9 @@
 				B65D933427BC9FD300314E66 /* PBXTargetDependency */,
 			);
 			name = UICompassTests;
+			packageProductDependencies = (
+				B6C5A62D27DCFDD8007FDF0E /* SnapshotTesting */,
+			);
 			productName = UICompassTests;
 			productReference = B65D932F27BC9FD300314E66 /* UICompassTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -464,6 +494,9 @@
 				Base,
 			);
 			mainGroup = B6135BF127B808F0000F36C6;
+			packageReferences = (
+				B6D3B50E27DCECFF00A9E8B8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = B6135BFB27B808F0000F36C6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -506,6 +539,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C5A64927DD15A4007FDF0E /* __Snapshots__ in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,6 +593,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B65705A327CA8C1F00398427 /* ButtonStateColorTests.swift in Sources */,
+				B6C5A63A27DD06C1007FDF0E /* AssertSnapshot+Extensions.swift in Sources */,
+				B6C5A64B27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift in Sources */,
+				B6C5A63127DCFE60007FDF0E /* RectangleButtonStyleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -949,6 +986,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B6D3B50E27DCECFF00A9E8B8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B6C5A62D27DCFDD8007FDF0E /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6D3B50E27DCECFF00A9E8B8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+		B6D3B50F27DCECFF00A9E8B8 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6D3B50E27DCECFF00A9E8B8 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B6135BF227B808F0000F36C6 /* Project object */;
 }

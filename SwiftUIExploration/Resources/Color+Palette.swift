@@ -16,4 +16,9 @@ extension Color {
     
     static let disabled = Color("disabled")
     
+    static let dayColor1 = Color("dayColor1")
+    static let dayColor2 = Color("dayColor2")
+    static let nightColor1 = Color("nightColor1")
+    static let nightColor2 = Color("nightColor2")
+    
 }

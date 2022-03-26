@@ -12,6 +12,14 @@ import SwiftUI
 @testable import UICompass
 
 class View_ConerRadiusUITests: XCTestCase {
+    override func setUp() {
+        // isRecording = true
+    }
+    
+    override class func tearDown() {
+        isRecording = false
+    }
+    
     func test_CornerRadius() {
         let view: some View = cornerRadiusTestExamples()
         let vc = UIHostingController(rootView: view)

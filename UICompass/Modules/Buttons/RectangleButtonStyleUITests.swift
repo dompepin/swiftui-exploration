@@ -13,6 +13,14 @@ import SwiftUI
 
 class RectangleButtonStyleUITests: XCTestCase {
     
+    override func setUp() {
+        // isRecording = true
+    }
+    
+    override class func tearDown() {
+        isRecording = false
+    }
+    
     func test_RectangleStyle() throws {
         let view: some View = rectangleButtonStylesExamples()
         let vc = UIHostingController(rootView: view)

@@ -14,6 +14,7 @@
 		B6135C0F27B808F2000F36C6 /* SwiftUIExplorationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C0E27B808F2000F36C6 /* SwiftUIExplorationTests.swift */; };
 		B6135C2E27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */; };
 		B6135C3127B8113D000F36C6 /* MenuItemViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */; };
+		B628E32A27F11FA0001244D5 /* CustomToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628E32927F11FA0001244D5 /* CustomToggle.swift */; };
 		B657058727C143AE00398427 /* View+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058627C143AE00398427 /* View+Log.swift */; };
 		B657058927C1C56900398427 /* DocumentPickerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058827C1C56900398427 /* DocumentPickerExampleView.swift */; };
 		B657058E27C3EA4D00398427 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058D27C3EA4D00398427 /* View+CornerRadius.swift */; };
@@ -37,6 +38,10 @@
 		B689204A27BCA01E00EED6A0 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204627BCA01E00EED6A0 /* Triangle.swift */; };
 		B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */; };
 		B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204D27BDFA8F00EED6A0 /* View+Size.swift */; };
+		B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B2CD7B27F9F0D800356768 /* DayNightToggleKnob.swift */; };
+		B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */; };
+		B6B3823127E62271007FE168 /* TogglesExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3823027E62271007FE168 /* TogglesExampleView.swift */; };
+		B6C402B328032B280034E50B /* CustomToggleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C402B228032B270034E50B /* CustomToggleUITests.swift */; };
 		B6C5A62E27DCFDD8007FDF0E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6C5A62D27DCFDD8007FDF0E /* SnapshotTesting */; };
 		B6C5A63127DCFE60007FDF0E /* RectangleButtonStyleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */; };
 		B6C5A63A27DD06C1007FDF0E /* AssertSnapshot+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */; };
@@ -100,6 +105,7 @@
 		B6135C0E27B808F2000F36C6 /* SwiftUIExplorationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExplorationTests.swift; sourceTree = "<group>"; };
 		B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicatorExampleView.swift; sourceTree = "<group>"; };
 		B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewLink.swift; sourceTree = "<group>"; };
+		B628E32927F11FA0001244D5 /* CustomToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggle.swift; sourceTree = "<group>"; };
 		B657058627C143AE00398427 /* View+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Log.swift"; sourceTree = "<group>"; };
 		B657058827C1C56900398427 /* DocumentPickerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerExampleView.swift; sourceTree = "<group>"; };
 		B657058D27C3EA4D00398427 /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
@@ -122,6 +128,10 @@
 		B689204627BCA01E00EED6A0 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicator.swift; sourceTree = "<group>"; };
 		B689204D27BDFA8F00EED6A0 /* View+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Size.swift"; sourceTree = "<group>"; };
+		B6B2CD7B27F9F0D800356768 /* DayNightToggleKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightToggleKnob.swift; sourceTree = "<group>"; };
+		B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightToggleBackground.swift; sourceTree = "<group>"; };
+		B6B3823027E62271007FE168 /* TogglesExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglesExampleView.swift; sourceTree = "<group>"; };
+		B6C402B228032B270034E50B /* CustomToggleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleUITests.swift; sourceTree = "<group>"; };
 		B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButtonStyleUITests.swift; sourceTree = "<group>"; };
 		B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssertSnapshot+Extensions.swift"; sourceTree = "<group>"; };
 		B6C5A64827DD15A4007FDF0E /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
@@ -220,6 +230,7 @@
 		B6135C2B27B810A6000F36C6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B6B3822F27E62256007FE168 /* Toggles */,
 				B657059227C4898500398427 /* Buttons */,
 				B65D931E27BB5E5C00314E66 /* Sheets */,
 				B6135C2C27B810AE000F36C6 /* ActivityIndicators */,
@@ -319,6 +330,7 @@
 				B689204C27BDF96C00EED6A0 /* Extensions */,
 				B689204527BCA01E00EED6A0 /* Shapes */,
 				B689204327BCA01E00EED6A0 /* Sheets */,
+				B6B3822A27E620F6007FE168 /* Toggle */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -356,6 +368,33 @@
 				B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B6B2CD7627F9DF5D00356768 /* DayNightToggle */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2CD7B27F9F0D800356768 /* DayNightToggleKnob.swift */,
+				B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */,
+			);
+			path = DayNightToggle;
+			sourceTree = "<group>";
+		};
+		B6B3822A27E620F6007FE168 /* Toggle */ = {
+			isa = PBXGroup;
+			children = (
+				B628E32927F11FA0001244D5 /* CustomToggle.swift */,
+				B6C402B228032B270034E50B /* CustomToggleUITests.swift */,
+			);
+			path = Toggle;
+			sourceTree = "<group>";
+		};
+		B6B3822F27E62256007FE168 /* Toggles */ = {
+			isa = PBXGroup;
+			children = (
+				B6B2CD7627F9DF5D00356768 /* DayNightToggle */,
+				B6B3823027E62271007FE168 /* TogglesExampleView.swift */,
+			);
+			path = Toggles;
 			sourceTree = "<group>";
 		};
 		B6C5A62C27DCFDD8007FDF0E /* Frameworks */ = {
@@ -550,7 +589,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6B3823127E62271007FE168 /* TogglesExampleView.swift in Sources */,
 				B657059B27CA863600398427 /* ButtonStyle.swift in Sources */,
+				B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */,
 				B657059427C4899E00398427 /* ButtonsExampleView.swift in Sources */,
 				B65D932027BB5E7300314E66 /* BottomSheetExampleView.swift in Sources */,
 				B6135C0027B808F0000F36C6 /* MainView.swift in Sources */,
@@ -558,6 +599,7 @@
 				B6135C2E27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift in Sources */,
 				B657058927C1C56900398427 /* DocumentPickerExampleView.swift in Sources */,
 				B6135C3127B8113D000F36C6 /* MenuItemViewLink.swift in Sources */,
+				B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */,
 				B657059927CA85EB00398427 /* Color+Palette.swift in Sources */,
 				B65705A927CA97FB00398427 /* EyebrowText.swift in Sources */,
 				B65705AB27CA99E400398427 /* Color+Extensions.swift in Sources */,
@@ -577,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B657058E27C3EA4D00398427 /* View+CornerRadius.swift in Sources */,
+				B628E32A27F11FA0001244D5 /* CustomToggle.swift in Sources */,
 				B689204A27BCA01E00EED6A0 /* Triangle.swift in Sources */,
 				B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */,
 				B689204927BCA01E00EED6A0 /* BottomSheet.swift in Sources */,
@@ -595,6 +638,7 @@
 				B65705A327CA8C1F00398427 /* ButtonStateColorTests.swift in Sources */,
 				B6C5A63A27DD06C1007FDF0E /* AssertSnapshot+Extensions.swift in Sources */,
 				B6C5A64B27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift in Sources */,
+				B6C402B328032B280034E50B /* CustomToggleUITests.swift in Sources */,
 				B6C5A63127DCFE60007FDF0E /* RectangleButtonStyleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,6 +11,10 @@ Left to explore (WIP):
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/BottomSheetExample.gif" width="250">
 
+
+
+
+
 ### Buttons
 
 Exploring button styles that support basic configurations: 
@@ -23,11 +27,30 @@ Exploring button styles that support basic configurations:
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/ButtonsExample.gif" width="250">
 
+
+
+
+
 ### Pulsing Activity Indicator
 
 Activity Indicator that pulses/fades objects in sequence. You can pulse any type of view: Shapes, Images, Text, etc.
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/PulsingActivityIndicatorsExample.gif" width="250">
+
+
+
+
+
+### Toggles
+
+Exploring Toggle where you can configure the shape of the background and knob in on and off statee
+
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/CustomToggleExample.gif" width="250">
+
+Left to do: 
+* Animate the transition of the knob. Seems there is an issue with
+* Use <Content: View> instead of using AnyView
+* Fix UITests: Knob does not seem to render in UI Tests
 
 ### Unit-Testing SwiftUI View
 

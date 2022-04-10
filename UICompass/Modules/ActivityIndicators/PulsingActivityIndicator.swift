@@ -57,8 +57,7 @@ public struct PulsingActivityIndicator: View {
                 config.views[$0]
                     .scaleEffect(animate ? 1.0 : config.scale)
                     .opacity(animate ? 1.0 : config.fade)
-                    .animation(Animation
-                                .easeInOut(duration: config.singlePulseDuration)
+                    .animation(.easeInOut(duration: config.singlePulseDuration)
                                 .repeatForever()
                                 .delay(delay1 * CGFloat($0)), value: animate)
             }

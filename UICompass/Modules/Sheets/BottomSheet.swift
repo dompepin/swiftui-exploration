@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-/// TODO: Add background dismissable shadow. that is optional.
-
 /// Presents a custom view from the bottom of the screen.
 public struct BottomSheet<Content>: View where Content: View {
     

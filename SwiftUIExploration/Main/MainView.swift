@@ -23,6 +23,9 @@ struct MainView: View {
                 MenuItemViewLink("Pulsing Activity Indicators") {
                     PulsingActivityIndicatorExampleView()
                 }
+                MenuItemViewLink("Toggles") {
+                    TogglesExampleView()
+                }
             }
             .listStyle(.plain)
             .navigationTitle("Examples")

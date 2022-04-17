@@ -20,6 +20,9 @@ struct MainView: View {
                 MenuItemViewLink("Buttons") {
                     ButtonsExampleView()
                 }
+                MenuItemViewLink("Keyboard Input View") {
+                    KeyboardInputExampleView()
+                }
                 MenuItemViewLink("Pulsing Activity Indicators") {
                     PulsingActivityIndicatorExampleView()
                 }

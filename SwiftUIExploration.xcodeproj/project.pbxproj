@@ -42,6 +42,8 @@
 		B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */; };
 		B6B3823127E62271007FE168 /* TogglesExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3823027E62271007FE168 /* TogglesExampleView.swift */; };
 		B6C402B328032B280034E50B /* CustomToggleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C402B228032B270034E50B /* CustomToggleUITests.swift */; };
+		B6C402B52803928C0034E50B /* KeyboardInputExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C402B42803928C0034E50B /* KeyboardInputExampleView.swift */; };
+		B6C402B92803C2CD0034E50B /* DismissableBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C402B82803C2CD0034E50B /* DismissableBackground.swift */; };
 		B6C5A62E27DCFDD8007FDF0E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6C5A62D27DCFDD8007FDF0E /* SnapshotTesting */; };
 		B6C5A63127DCFE60007FDF0E /* RectangleButtonStyleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */; };
 		B6C5A63A27DD06C1007FDF0E /* AssertSnapshot+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */; };
@@ -132,6 +134,8 @@
 		B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightToggleBackground.swift; sourceTree = "<group>"; };
 		B6B3823027E62271007FE168 /* TogglesExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglesExampleView.swift; sourceTree = "<group>"; };
 		B6C402B228032B270034E50B /* CustomToggleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleUITests.swift; sourceTree = "<group>"; };
+		B6C402B42803928C0034E50B /* KeyboardInputExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardInputExampleView.swift; sourceTree = "<group>"; };
+		B6C402B82803C2CD0034E50B /* DismissableBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissableBackground.swift; sourceTree = "<group>"; };
 		B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButtonStyleUITests.swift; sourceTree = "<group>"; };
 		B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssertSnapshot+Extensions.swift"; sourceTree = "<group>"; };
 		B6C5A64827DD15A4007FDF0E /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 		B6135C2B27B810A6000F36C6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B6C402B6280392920034E50B /* Keyboard */,
 				B6B3822F27E62256007FE168 /* Toggles */,
 				B657059227C4898500398427 /* Buttons */,
 				B65D931E27BB5E5C00314E66 /* Sheets */,
@@ -325,6 +330,7 @@
 		B689204227BCA01E00EED6A0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B6C402B72803C2B30034E50B /* Common */,
 				B689204727BCA01E00EED6A0 /* ActivityIndicators */,
 				B657058F27C45A7900398427 /* Buttons */,
 				B689204C27BDF96C00EED6A0 /* Extensions */,
@@ -395,6 +401,22 @@
 				B6B3823027E62271007FE168 /* TogglesExampleView.swift */,
 			);
 			path = Toggles;
+			sourceTree = "<group>";
+		};
+		B6C402B6280392920034E50B /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B6C402B42803928C0034E50B /* KeyboardInputExampleView.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		B6C402B72803C2B30034E50B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B6C402B82803C2CD0034E50B /* DismissableBackground.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		B6C5A62C27DCFDD8007FDF0E /* Frameworks */ = {
@@ -602,6 +624,7 @@
 				B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */,
 				B657059927CA85EB00398427 /* Color+Palette.swift in Sources */,
 				B65705A927CA97FB00398427 /* EyebrowText.swift in Sources */,
+				B6C402B52803928C0034E50B /* KeyboardInputExampleView.swift in Sources */,
 				B65705AB27CA99E400398427 /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -626,6 +649,7 @@
 				B657059627C88AF600398427 /* RectangleButtonStyle.swift in Sources */,
 				B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */,
 				B65D932A27BC9FD300314E66 /* UICompass.docc in Sources */,
+				B6C402B92803C2CD0034E50B /* DismissableBackground.swift in Sources */,
 				B657058727C143AE00398427 /* View+Log.swift in Sources */,
 				B65705A027CA8BE100398427 /* ButtonStateColor.swift in Sources */,
 			);

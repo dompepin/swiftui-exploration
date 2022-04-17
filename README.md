@@ -71,3 +71,9 @@ Cons:
 Future exploration
 * Can I generate app store screenshots?
 * Create a CI job that runs these tests
+
+## Future Exploration Ideas
+* Custom alerts
+* Checkbox
+* Segmented Control
+* Pull-to-refresh custom animation

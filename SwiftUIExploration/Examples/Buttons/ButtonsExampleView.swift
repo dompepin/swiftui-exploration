@@ -17,7 +17,7 @@ struct ButtonsExampleView: View {
                     Text("Enabled Button")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(ButtonStyle.secondary)
+                .buttonStyle(ButtonStyle.primary)
                 
                 Button {} label: {
                     Text("Disabled Button")

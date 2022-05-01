@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6068CE2280C8F7A00C836C2 /* PullToRefreshExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068CE1280C8F7A00C836C2 /* PullToRefreshExampleView.swift */; };
 		B6135BFE27B808F0000F36C6 /* SwiftUIExplorationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135BFD27B808F0000F36C6 /* SwiftUIExplorationApp.swift */; };
 		B6135C0027B808F0000F36C6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135BFF27B808F0000F36C6 /* MainView.swift */; };
 		B6135C0227B808F1000F36C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6135C0127B808F1000F36C6 /* Assets.xcassets */; };
@@ -96,6 +97,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B6068CE1280C8F7A00C836C2 /* PullToRefreshExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshExampleView.swift; sourceTree = "<group>"; };
 		B6135BFA27B808F0000F36C6 /* SwiftUIExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6135BFD27B808F0000F36C6 /* SwiftUIExplorationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExplorationApp.swift; sourceTree = "<group>"; };
 		B6135BFF27B808F0000F36C6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6068CE0280C8F6900C836C2 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B6068CE1280C8F7A00C836C2 /* PullToRefreshExampleView.swift */,
+			);
+			path = PullToRefresh;
+			sourceTree = "<group>";
+		};
 		B6135BF127B808F0000F36C6 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +240,7 @@
 		B6135C2B27B810A6000F36C6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B6068CE0280C8F6900C836C2 /* PullToRefresh */,
 				B6B3822F27E62256007FE168 /* Toggles */,
 				B657059227C4898500398427 /* Buttons */,
 				B65D931E27BB5E5C00314E66 /* Sheets */,
@@ -602,6 +613,7 @@
 				B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */,
 				B657059927CA85EB00398427 /* Color+Palette.swift in Sources */,
 				B65705A927CA97FB00398427 /* EyebrowText.swift in Sources */,
+				B6068CE2280C8F7A00C836C2 /* PullToRefreshExampleView.swift in Sources */,
 				B65705AB27CA99E400398427 /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

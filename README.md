@@ -43,7 +43,7 @@ Activity Indicator that pulses/fades objects in sequence. You can pulse any type
 
 ### Toggles
 
-Exploring Toggle where you can configure the shape of the background and knob in on and off statee
+Exploring Toggle where you can configure the shape of the background and knob in on and off state.
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/CustomToggleExample.gif" width="250">
 
@@ -51,6 +51,26 @@ Left to do:
 * Animate the transition of the knob. Seems there is an issue with
 * Use <Content: View> instead of using AnyView
 * Fix UITests: Knob does not seem to render in UI Tests
+
+
+
+
+
+### Pull-To-Refresh
+
+Exploring the ability to do a custom Pull-To-Refresh animation.
+
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/CustomPullToRefreshExample.gif" width="250">
+
+Left to do (and issues): 
+* Create a `refreshable()` modifier that can be applied to a `ScrollView()` and a `List()`
+* See if we can pass the PTR View/Animation
+* This will not work with a `List()`
+* I did not find a way to detect when the finger is touching the scroll view or not. This has some side effect where you can trigger the PTR by flicking the view down.
+
+
+
+
 
 ### Unit-Testing SwiftUI View
 

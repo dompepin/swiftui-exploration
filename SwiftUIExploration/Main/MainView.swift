@@ -20,6 +20,12 @@ struct MainView: View {
                 MenuItemViewLink("Buttons") {
                     ButtonsExampleView()
                 }
+                MenuItemViewLink("Apple Pull-to-refresh") {
+                    ApplePullToRefreshExampleView()
+                }
+                MenuItemViewLink("Custom Pull-to-refresh") { // TODO: Move to sub view so I can have both pull to refresh independent.
+                    CustomPullToRefreshExampleView()
+                }
                 MenuItemViewLink("Pulsing Activity Indicators") {
                     PulsingActivityIndicatorExampleView()
                 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6068CE2280C8F7A00C836C2 /* ApplePullToRefreshExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6068CE1280C8F7A00C836C2 /* ApplePullToRefreshExampleView.swift */; };
 		B6135BFE27B808F0000F36C6 /* SwiftUIExplorationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135BFD27B808F0000F36C6 /* SwiftUIExplorationApp.swift */; };
 		B6135C0027B808F0000F36C6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135BFF27B808F0000F36C6 /* MainView.swift */; };
 		B6135C0227B808F1000F36C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6135C0127B808F1000F36C6 /* Assets.xcassets */; };
@@ -15,6 +16,8 @@
 		B6135C2E27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */; };
 		B6135C3127B8113D000F36C6 /* MenuItemViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */; };
 		B628E32A27F11FA0001244D5 /* CustomToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628E32927F11FA0001244D5 /* CustomToggle.swift */; };
+		B64A7A1829DBC76200142DCA /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A7A1729DBC76200142DCA /* Comparable+Extensions.swift */; };
+		B64A7A1A29DCEA2400142DCA /* CustomPullToRefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A7A1929DCEA2400142DCA /* CustomPullToRefreshScrollView.swift */; };
 		B657058727C143AE00398427 /* View+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058627C143AE00398427 /* View+Log.swift */; };
 		B657058927C1C56900398427 /* DocumentPickerExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058827C1C56900398427 /* DocumentPickerExampleView.swift */; };
 		B657058E27C3EA4D00398427 /* View+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058D27C3EA4D00398427 /* View+CornerRadius.swift */; };
@@ -41,6 +44,7 @@
 		B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B2CD7B27F9F0D800356768 /* DayNightToggleKnob.swift */; };
 		B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */; };
 		B6B3823127E62271007FE168 /* TogglesExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3823027E62271007FE168 /* TogglesExampleView.swift */; };
+		B6BB304928663622005DEECA /* CustomPullToRefreshExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BB304828663622005DEECA /* CustomPullToRefreshExampleView.swift */; };
 		B6C402B328032B280034E50B /* CustomToggleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C402B228032B270034E50B /* CustomToggleUITests.swift */; };
 		B6C5A62E27DCFDD8007FDF0E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6C5A62D27DCFDD8007FDF0E /* SnapshotTesting */; };
 		B6C5A63127DCFE60007FDF0E /* RectangleButtonStyleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */; };
@@ -48,6 +52,9 @@
 		B6C5A64927DD15A4007FDF0E /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = B6C5A64827DD15A4007FDF0E /* __Snapshots__ */; };
 		B6C5A64B27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */; };
 		B6D3B51027DCECFF00A9E8B8 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6D3B50F27DCECFF00A9E8B8 /* SnapshotTesting */; };
+		B6F162C229DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F162C129DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift */; };
+		B6F162C429DF2E1A00AD2FA9 /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F162C329DF2E1A00AD2FA9 /* Task+Extensions.swift */; };
+		B6F162C829DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F162C729DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +103,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B6068CE1280C8F7A00C836C2 /* ApplePullToRefreshExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplePullToRefreshExampleView.swift; sourceTree = "<group>"; };
 		B6135BFA27B808F0000F36C6 /* SwiftUIExploration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExploration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6135BFD27B808F0000F36C6 /* SwiftUIExplorationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExplorationApp.swift; sourceTree = "<group>"; };
 		B6135BFF27B808F0000F36C6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -106,6 +114,8 @@
 		B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicatorExampleView.swift; sourceTree = "<group>"; };
 		B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewLink.swift; sourceTree = "<group>"; };
 		B628E32927F11FA0001244D5 /* CustomToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggle.swift; sourceTree = "<group>"; };
+		B64A7A1729DBC76200142DCA /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
+		B64A7A1929DCEA2400142DCA /* CustomPullToRefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPullToRefreshScrollView.swift; sourceTree = "<group>"; };
 		B657058627C143AE00398427 /* View+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Log.swift"; sourceTree = "<group>"; };
 		B657058827C1C56900398427 /* DocumentPickerExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPickerExampleView.swift; sourceTree = "<group>"; };
 		B657058D27C3EA4D00398427 /* View+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+CornerRadius.swift"; sourceTree = "<group>"; };
@@ -131,11 +141,15 @@
 		B6B2CD7B27F9F0D800356768 /* DayNightToggleKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightToggleKnob.swift; sourceTree = "<group>"; };
 		B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightToggleBackground.swift; sourceTree = "<group>"; };
 		B6B3823027E62271007FE168 /* TogglesExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglesExampleView.swift; sourceTree = "<group>"; };
+		B6BB304828663622005DEECA /* CustomPullToRefreshExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPullToRefreshExampleView.swift; sourceTree = "<group>"; };
 		B6C402B228032B270034E50B /* CustomToggleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggleUITests.swift; sourceTree = "<group>"; };
 		B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleButtonStyleUITests.swift; sourceTree = "<group>"; };
 		B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssertSnapshot+Extensions.swift"; sourceTree = "<group>"; };
 		B6C5A64827DD15A4007FDF0E /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
 		B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConerRadiusUITests.swift"; sourceTree = "<group>"; };
+		B6F162C129DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshExampleRow.swift; sourceTree = "<group>"; };
+		B6F162C329DF2E1A00AD2FA9 /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
+		B6F162C729DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable_ExtensionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +188,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6068CE0280C8F6900C836C2 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B6068CE1280C8F7A00C836C2 /* ApplePullToRefreshExampleView.swift */,
+				B6BB304828663622005DEECA /* CustomPullToRefreshExampleView.swift */,
+				B64A7A1929DCEA2400142DCA /* CustomPullToRefreshScrollView.swift */,
+				B6F162C129DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift */,
+			);
+			path = PullToRefresh;
+			sourceTree = "<group>";
+		};
 		B6135BF127B808F0000F36C6 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +255,7 @@
 		B6135C2B27B810A6000F36C6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B6068CE0280C8F6900C836C2 /* PullToRefresh */,
 				B6B3822F27E62256007FE168 /* Toggles */,
 				B657059227C4898500398427 /* Buttons */,
 				B65D931E27BB5E5C00314E66 /* Sheets */,
@@ -362,10 +388,13 @@
 		B689204C27BDF96C00EED6A0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B6F162C729DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift */,
+				B64A7A1729DBC76200142DCA /* Comparable+Extensions.swift */,
+				B6F162C329DF2E1A00AD2FA9 /* Task+Extensions.swift */,
+				B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */,
+				B657058D27C3EA4D00398427 /* View+CornerRadius.swift */,
 				B657058627C143AE00398427 /* View+Log.swift */,
 				B689204D27BDFA8F00EED6A0 /* View+Size.swift */,
-				B657058D27C3EA4D00398427 /* View+CornerRadius.swift */,
-				B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -589,6 +618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6BB304928663622005DEECA /* CustomPullToRefreshExampleView.swift in Sources */,
 				B6B3823127E62271007FE168 /* TogglesExampleView.swift in Sources */,
 				B657059B27CA863600398427 /* ButtonStyle.swift in Sources */,
 				B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */,
@@ -602,6 +632,9 @@
 				B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */,
 				B657059927CA85EB00398427 /* Color+Palette.swift in Sources */,
 				B65705A927CA97FB00398427 /* EyebrowText.swift in Sources */,
+				B6068CE2280C8F7A00C836C2 /* ApplePullToRefreshExampleView.swift in Sources */,
+				B64A7A1A29DCEA2400142DCA /* CustomPullToRefreshScrollView.swift in Sources */,
+				B6F162C229DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift in Sources */,
 				B65705AB27CA99E400398427 /* Color+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -610,6 +643,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6F162C829DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift in Sources */,
 				B6135C0F27B808F2000F36C6 /* SwiftUIExplorationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,9 +658,11 @@
 				B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */,
 				B689204927BCA01E00EED6A0 /* BottomSheet.swift in Sources */,
 				B657059627C88AF600398427 /* RectangleButtonStyle.swift in Sources */,
+				B64A7A1829DBC76200142DCA /* Comparable+Extensions.swift in Sources */,
 				B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */,
 				B65D932A27BC9FD300314E66 /* UICompass.docc in Sources */,
 				B657058727C143AE00398427 /* View+Log.swift in Sources */,
+				B6F162C429DF2E1A00AD2FA9 /* Task+Extensions.swift in Sources */,
 				B65705A027CA8BE100398427 /* ButtonStateColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

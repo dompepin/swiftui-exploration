@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-/// Row that I can use in the pull-to-refresh example
-struct PullToRefreshExampleRow: View {
+/// Row use in some of the examples
+struct ExampleTitleRow: View {
     
     // MARK: Properties
     
@@ -31,9 +31,6 @@ struct PullToRefreshExampleRow: View {
         .background(RoundedRectangle(cornerRadius: 4.0)
             .foregroundColor(.white)
             .shadow(color: .gray, radius: 8, x: 0, y: 8))
-        
-        
-        
     }
     
     // MARK: Init
@@ -45,6 +42,6 @@ struct PullToRefreshExampleRow: View {
 
 struct PullToRefreshExampleRow_Previews: PreviewProvider {
     static var previews: some View {
-        PullToRefreshExampleRow("Hello World!")
+        ExampleTitleRow("Hello World!")
     }
 }

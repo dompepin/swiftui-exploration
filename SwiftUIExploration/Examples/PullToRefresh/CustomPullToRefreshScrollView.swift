@@ -176,7 +176,7 @@ struct CustomRefreshView_Previews: PreviewProvider {
         CustomPullToRefreshScrollView() {
             LazyVStack(spacing:8) {
                 ForEach(1..<100) { row in
-                    PullToRefreshExampleRow("Row \(row)")
+                    ExampleTitleRow("Row \(row)")
                         .padding(.horizontal, 16)
                 }
             }

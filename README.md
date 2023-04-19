@@ -70,6 +70,38 @@ Left to do (and issues):
 
 
 
+### Drag and Drop
+
+Exploring the ability to do drag and drop custom objects.
+
+##### Drag and dropping between Lists
+
+Drag and Drop is supported by default within a lists, this example explores the ability to drag and drop an object/row between lists.
+
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropBetweenListsExample.gif" width="250">
+
+Pros:
+* You keep what the list offers by default: Move, re-order, delete, edit button.
+ 
+Cons: 
+* You are limited with how you can render the cell
+
+##### Drag and dropping using a VStack
+
+This example explores adding drag and drop to a LazyVStack (Since 'LIST' offer limited ways to customize their rows). 
+
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropVStackExampleView.gif" width="250">
+
+Pros:
+* You can have any design of cell you like.
+
+Cons:
+* You lose some of the out-of-the box functionality of the list: delete, move, edit.
+* I could not get the drop action to recognize the Item UType. This issue was addressed by storing the dragged item in the drag closure.
+* I could not get the insert '+' to show up when dragging.
+
+Left to do (issues): 
+* Drag and drop between VStack or another external source (ie. string from Safari)
 
 
 ### Unit-Testing SwiftUI View

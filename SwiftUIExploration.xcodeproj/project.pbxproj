@@ -16,6 +16,12 @@
 		B6135C2E27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */; };
 		B6135C3127B8113D000F36C6 /* MenuItemViewLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */; };
 		B628E32A27F11FA0001244D5 /* CustomToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B628E32927F11FA0001244D5 /* CustomToggle.swift */; };
+		B63E249229EF7AD200C63B52 /* DragAndDropVStackExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E249029EF7AD200C63B52 /* DragAndDropVStackExampleView.swift */; };
+		B63E249329EF7AD200C63B52 /* DragAndDropBetweenListsExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E249129EF7AD200C63B52 /* DragAndDropBetweenListsExampleView.swift */; };
+		B63E249729EF7B5300C63B52 /* ItemDragObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E249529EF7B5300C63B52 /* ItemDragObject.swift */; };
+		B63E249829EF7B5300C63B52 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E249629EF7B5300C63B52 /* Item.swift */; };
+		B63E249A29EF7BA900C63B52 /* Logger+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E249929EF7BA900C63B52 /* Logger+extensions.swift */; };
+		B63E249D29F02BE000C63B52 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63E249C29F02BE000C63B52 /* Constants.swift */; };
 		B64A7A1829DBC76200142DCA /* Comparable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A7A1729DBC76200142DCA /* Comparable+Extensions.swift */; };
 		B64A7A1A29DCEA2400142DCA /* CustomPullToRefreshScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64A7A1929DCEA2400142DCA /* CustomPullToRefreshScrollView.swift */; };
 		B657058727C143AE00398427 /* View+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B657058627C143AE00398427 /* View+Log.swift */; };
@@ -52,7 +58,7 @@
 		B6C5A64927DD15A4007FDF0E /* __Snapshots__ in Resources */ = {isa = PBXBuildFile; fileRef = B6C5A64827DD15A4007FDF0E /* __Snapshots__ */; };
 		B6C5A64B27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */; };
 		B6D3B51027DCECFF00A9E8B8 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6D3B50F27DCECFF00A9E8B8 /* SnapshotTesting */; };
-		B6F162C229DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F162C129DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift */; };
+		B6F162C229DF2C1100AD2FA9 /* ExampleTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F162C129DF2C1100AD2FA9 /* ExampleTitleRow.swift */; };
 		B6F162C429DF2E1A00AD2FA9 /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F162C329DF2E1A00AD2FA9 /* Task+Extensions.swift */; };
 		B6F162C829DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F162C729DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift */; };
 /* End PBXBuildFile section */
@@ -114,6 +120,13 @@
 		B6135C2D27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicatorExampleView.swift; sourceTree = "<group>"; };
 		B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemViewLink.swift; sourceTree = "<group>"; };
 		B628E32927F11FA0001244D5 /* CustomToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToggle.swift; sourceTree = "<group>"; };
+		B63E249029EF7AD200C63B52 /* DragAndDropVStackExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragAndDropVStackExampleView.swift; sourceTree = "<group>"; };
+		B63E249129EF7AD200C63B52 /* DragAndDropBetweenListsExampleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragAndDropBetweenListsExampleView.swift; sourceTree = "<group>"; };
+		B63E249429EF7AFB00C63B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B63E249529EF7B5300C63B52 /* ItemDragObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDragObject.swift; sourceTree = "<group>"; };
+		B63E249629EF7B5300C63B52 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B63E249929EF7BA900C63B52 /* Logger+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+extensions.swift"; sourceTree = "<group>"; };
+		B63E249C29F02BE000C63B52 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B64A7A1729DBC76200142DCA /* Comparable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
 		B64A7A1929DCEA2400142DCA /* CustomPullToRefreshScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPullToRefreshScrollView.swift; sourceTree = "<group>"; };
 		B657058627C143AE00398427 /* View+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Log.swift"; sourceTree = "<group>"; };
@@ -147,7 +160,7 @@
 		B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AssertSnapshot+Extensions.swift"; sourceTree = "<group>"; };
 		B6C5A64827DD15A4007FDF0E /* __Snapshots__ */ = {isa = PBXFileReference; lastKnownFileType = folder; path = __Snapshots__; sourceTree = "<group>"; };
 		B6C5A64A27DD7BB7007FDF0E /* View+ConerRadiusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ConerRadiusUITests.swift"; sourceTree = "<group>"; };
-		B6F162C129DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullToRefreshExampleRow.swift; sourceTree = "<group>"; };
+		B6F162C129DF2C1100AD2FA9 /* ExampleTitleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTitleRow.swift; sourceTree = "<group>"; };
 		B6F162C329DF2E1A00AD2FA9 /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
 		B6F162C729DFC54200AD2FA9 /* Comparable_ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparable_ExtensionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,7 +207,6 @@
 				B6068CE1280C8F7A00C836C2 /* ApplePullToRefreshExampleView.swift */,
 				B6BB304828663622005DEECA /* CustomPullToRefreshExampleView.swift */,
 				B64A7A1929DCEA2400142DCA /* CustomPullToRefreshScrollView.swift */,
-				B6F162C129DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift */,
 			);
 			path = PullToRefresh;
 			sourceTree = "<group>";
@@ -227,6 +239,7 @@
 		B6135BFC27B808F0000F36C6 /* SwiftUIExploration */ = {
 			isa = PBXGroup;
 			children = (
+				B63E249429EF7AFB00C63B52 /* Info.plist */,
 				B65705A427CA97C700398427 /* Common */,
 				B6135C2B27B810A6000F36C6 /* Examples */,
 				B6135C2F27B810E5000F36C6 /* Main */,
@@ -255,6 +268,8 @@
 		B6135C2B27B810A6000F36C6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B63E249B29EF837600C63B52 /* Common */,
+				B63E248F29EEE88800C63B52 /* DragAndDrop */,
 				B6068CE0280C8F6900C836C2 /* PullToRefresh */,
 				B6B3822F27E62256007FE168 /* Toggles */,
 				B657059227C4898500398427 /* Buttons */,
@@ -279,6 +294,25 @@
 				B6135BFD27B808F0000F36C6 /* SwiftUIExplorationApp.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		B63E248F29EEE88800C63B52 /* DragAndDrop */ = {
+			isa = PBXGroup;
+			children = (
+				B63E249629EF7B5300C63B52 /* Item.swift */,
+				B63E249529EF7B5300C63B52 /* ItemDragObject.swift */,
+				B63E249129EF7AD200C63B52 /* DragAndDropBetweenListsExampleView.swift */,
+				B63E249029EF7AD200C63B52 /* DragAndDropVStackExampleView.swift */,
+			);
+			path = DragAndDrop;
+			sourceTree = "<group>";
+		};
+		B63E249B29EF837600C63B52 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B6F162C129DF2C1100AD2FA9 /* ExampleTitleRow.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		B657058F27C45A7900398427 /* Buttons */ = {
@@ -313,9 +347,11 @@
 		B65705A427CA97C700398427 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B65705A827CA97FB00398427 /* EyebrowText.swift */,
-				B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */,
 				B65705AA27CA99E400398427 /* Color+Extensions.swift */,
+				B63E249C29F02BE000C63B52 /* Constants.swift */,
+				B65705A827CA97FB00398427 /* EyebrowText.swift */,
+				B63E249929EF7BA900C63B52 /* Logger+extensions.swift */,
+				B6135C3027B8113D000F36C6 /* MenuItemViewLink.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -623,19 +659,25 @@
 				B657059B27CA863600398427 /* ButtonStyle.swift in Sources */,
 				B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */,
 				B657059427C4899E00398427 /* ButtonsExampleView.swift in Sources */,
+				B63E249229EF7AD200C63B52 /* DragAndDropVStackExampleView.swift in Sources */,
+				B63E249829EF7B5300C63B52 /* Item.swift in Sources */,
 				B65D932027BB5E7300314E66 /* BottomSheetExampleView.swift in Sources */,
 				B6135C0027B808F0000F36C6 /* MainView.swift in Sources */,
 				B6135BFE27B808F0000F36C6 /* SwiftUIExplorationApp.swift in Sources */,
+				B63E249329EF7AD200C63B52 /* DragAndDropBetweenListsExampleView.swift in Sources */,
 				B6135C2E27B810D3000F36C6 /* PulsingActivityIndicatorExampleView.swift in Sources */,
 				B657058927C1C56900398427 /* DocumentPickerExampleView.swift in Sources */,
 				B6135C3127B8113D000F36C6 /* MenuItemViewLink.swift in Sources */,
+				B63E249729EF7B5300C63B52 /* ItemDragObject.swift in Sources */,
 				B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */,
 				B657059927CA85EB00398427 /* Color+Palette.swift in Sources */,
 				B65705A927CA97FB00398427 /* EyebrowText.swift in Sources */,
+				B63E249A29EF7BA900C63B52 /* Logger+extensions.swift in Sources */,
 				B6068CE2280C8F7A00C836C2 /* ApplePullToRefreshExampleView.swift in Sources */,
 				B64A7A1A29DCEA2400142DCA /* CustomPullToRefreshScrollView.swift in Sources */,
-				B6F162C229DF2C1100AD2FA9 /* PullToRefreshExampleRow.swift in Sources */,
+				B6F162C229DF2C1100AD2FA9 /* ExampleTitleRow.swift in Sources */,
 				B65705AB27CA99E400398427 /* Color+Extensions.swift in Sources */,
+				B63E249D29F02BE000C63B52 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -833,6 +875,7 @@
 				DEVELOPMENT_TEAM = 2S636NTM9W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUIExploration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -863,6 +906,7 @@
 				DEVELOPMENT_TEAM = 2S636NTM9W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUIExploration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

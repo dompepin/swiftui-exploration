@@ -14,25 +14,19 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             List {
-                MenuItemViewLink("Bottom Sheets") {
+                MenuItemViewLink("Bottom sheets") {
                     BottomSheetExampleView()
                 }
                 MenuItemViewLink("Buttons") {
                     ButtonsExampleView()
                 }
-                MenuItemViewLink("Drag and Drop - List") {
-                    DragAndDropBetweenListsExampleView()
+                MenuItemViewLink("Drag and drop") {
+                    DragAndDropExamplesView()
                 }
-                MenuItemViewLink("Drag and Drop - VStack") {
-                    DragAndDropVStackExampleView()
+                MenuItemViewLink("Pull-to-refresh") {
+                    PullToRefreshExamplesView()
                 }
-                MenuItemViewLink("Pull-to-refresh - Apple") {
-                    ApplePullToRefreshExampleView()
-                }
-                MenuItemViewLink("Pull-to-refresh - Custom") { // TODO: Move to sub view so I can have both pull to refresh independent.
-                    CustomPullToRefreshExampleView()
-                }
-                MenuItemViewLink("Pulsing Activity Indicators") {
+                MenuItemViewLink("Pulsing activity indicators") {
                     PulsingActivityIndicatorExampleView()
                 }
                 MenuItemViewLink("Toggles") {
@@ -41,8 +35,7 @@ struct MainView: View {
             }
             .listStyle(.plain)
             .navigationTitle("Examples")
-            .navigationBarTitleDisplayMode(.large
-            )
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }

@@ -12,30 +12,30 @@ struct ButtonsExampleView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                EyebrowText("Filled Button")
+                EyebrowText("Filled button")
                 Button {} label: {
-                    Text("Enabled Button")
+                    Text("Enabled button")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(ButtonStyle.secondary)
                 
                 Button {} label: {
-                    Text("Disabled Button")
+                    Text("Disabled button")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(ButtonStyle.primary)
                 .disabled(true)
                 
-                EyebrowText("Outline Button")
+                EyebrowText("Outline button")
                     .padding(.top, 16)
                 Button {} label: {
-                    Text("Enabled Button")
+                    Text("Enabled button")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(ButtonStyle.secondary)
                 
                 Button {} label: {
-                    Text("Disabled Button")
+                    Text("Disabled button")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(ButtonStyle.secondary)

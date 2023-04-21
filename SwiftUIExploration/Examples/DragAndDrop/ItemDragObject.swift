@@ -7,6 +7,7 @@
 
 import Foundation
 import os.log
+import UniformTypeIdentifiers
 
 /// Class that encapsulate an item so that it can be dragged and dropped.
 final class ItemDragObject: NSObject, Codable {
@@ -22,7 +23,7 @@ final class ItemDragObject: NSObject, Codable {
 // MARK: NSItemProviderWriting
 extension ItemDragObject: NSItemProviderWriting {
     
-    static let typeIdentifier = "com.dompepin.swiftuiexploration.item"
+    static let typeIdentifier = UTType.appItem.identifier
     
     static var writableTypeIdentifiersForItemProvider: [String] {
         [typeIdentifier]

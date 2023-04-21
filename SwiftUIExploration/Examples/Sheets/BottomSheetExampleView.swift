@@ -20,22 +20,22 @@ struct BottomSheetExampleView: View {
     var body: some View {
         ScrollView {
             VStack (alignment: .leading, spacing: 16) {
-                EyebrowText("Apple Examples")
+                EyebrowText("Apple examples")
                 Button {
                     isActionSheetPresented.toggle()
                 } label: {
-                    Text("Action Sheet")
+                    Text("Action sheet")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(ButtonStyle.primary)
                 
                 
-                EyebrowText("Custom Examples")
+                EyebrowText("Custom examples")
                     .padding(.top, 16)
                 Button {
                     isCustomSheetPresented.toggle()
                 } label: {
-                    Text("Bottom Sheet")
+                    Text("Bottom sheet")
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(ButtonStyle.primary)
@@ -55,6 +55,8 @@ struct BottomSheetExampleView: View {
                                ])
 
         }
+        .navigationTitle("Bottom sheets")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

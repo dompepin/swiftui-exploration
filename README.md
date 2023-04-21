@@ -70,6 +70,9 @@ Left to do (and issues):
 
 
 
+
+
+
 ### Drag and Drop
 
 Exploring the ability to do drag and drop custom objects.
@@ -82,18 +85,20 @@ Drag and Drop is supported by default within a lists, this example explores the 
 
 Pros:
 * You keep what the list offers by default: Move, re-order, delete, edit button.
+* iOS15+
  
 Cons: 
 * You are limited with how you can render the cell
 
-##### Drag and dropping using a VStack
+##### Drag and dropping using a VStack and NSItemProvider
 
 This example explores adding drag and drop to a LazyVStack (Since 'LIST' offer limited ways to customize their rows). 
 
-<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropVStackExampleView.gif" width="250">
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropItemProviderVStackExampleView.gif" width="250">
 
 Pros:
-* You can have any design of cell you like.
+* You can have any cell design you like.
+* iOS15+
 
 Cons:
 * You lose some of the out-of-the box functionality of the list: delete, move, edit.
@@ -102,6 +107,29 @@ Cons:
 
 Left to do (issues): 
 * Drag and drop between VStack or another external source (ie. string from Safari)
+
+##### Drag and dropping using a VStack and Transferable
+
+This example explores adding drag and drop to a LazyVStack using Transferable instead of NSItemProvider. 
+
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropTransferableVStackExampleView.gif" width="250">
+
+Pros:
+* You can have any cell design you like.
+* You have control over the layout of the item you are dragging, so you can be super creative here.
+* Easier/simpler to use than NSItemProvider
+
+Cons:
+* You lose some of the out-of-the box functionality of the list: delete, move, edit.
+* The API is missing a way to tell us which item we are dragging. This is not a problem when dragging and dropping to a fix area. However, it is hard to mimic the `List` move functionality. You can do it, but the result were not great.
+* iOS16+
+
+Left to do (issues): 
+* Drag and drop between VStack or another external source (ie. string from Safari)
+
+
+
+
 
 
 ### Unit-Testing SwiftUI View

@@ -15,30 +15,30 @@ struct TogglesExampleView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 Group {
-                    EyebrowText("Apple Examples")
-                    Toggle("Apple Default Toggle", isOn: $isToggleOn)
-                    Toggle("Apple Default Toggle Variation", isOn: $isToggleOn)
+                    EyebrowText("Apple examples")
+                    Toggle("Apple default toggle", isOn: $isToggleOn)
+                    Toggle("Apple default toggle variation", isOn: $isToggleOn)
                         .toggleStyle(SwitchToggleStyle(tint: .red))
-                    Toggle("Apple Button Toggle", isOn: $isToggleOn)
+                    Toggle("Apple button toggle", isOn: $isToggleOn)
                         .toggleStyle(ButtonToggleStyle())
                 }
                 Group {
-                    EyebrowText("Custom Examples")
+                    EyebrowText("Custom examples")
                         .padding(.top, 16)
                     HStack {
-                        Text("Day/Night Toggle")
+                        Text("Day/Night toggle")
                         Spacer()
                         CustomToggle(isOn: $isToggleOn, config: .dayNight)
                             .frame(width: 100, height: 44)
                     }
                     HStack {
-                        Text("Rounded Rectangle Toggle")
+                        Text("Rounded rectangle toggle")
                         Spacer()
                         CustomToggle(isOn: $isToggleOn, config: .systemRoundedRectangle)
                             .frame(width: 60, height: 30)
                     }
                     HStack {
-                        Text("Slider Toggle")
+                        Text("Slider toggle")
                         Spacer()
                         CustomToggle(isOn: $isToggleOn, config: .skinnySlider)
                             .frame(width: 100, height: 30)

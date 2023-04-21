@@ -1,5 +1,5 @@
 //
-//  DragAndDropPrototype2View.swift
+//  DragAndDropItemProviderVStackExampleView.swift
 //  ToDoPad
 //
 //  Created by Dominic Pepin on 2023-04-16.
@@ -8,8 +8,8 @@
 import SwiftUI
 import os.log
 
-/// This example explores dragging and dropping within a VStack.
-struct DragAndDropVStackExampleView: View {
+/// This example explores dragging and dropping within a VStack using NSItemProvider.
+struct DragAndDropItemProviderVStackExampleView: View {
     
     @State private var draggedItem: Item?
     
@@ -23,7 +23,7 @@ struct DragAndDropVStackExampleView: View {
     
     var body: some View {
         ScrollView(showsIndicators: false) {
-            LazyVStack(spacing: 8) {
+            LazyVStack(spacing: Constant.Padding.RowSpacing.default) {
                 ForEach(items1, id: \.self) { item in
                     ExampleTitleRow(item.title)
                         .onDrag {
@@ -36,7 +36,9 @@ struct DragAndDropVStackExampleView: View {
                 }
                 Spacer()
             }
-            .padding(20)
+            .padding(.top, Constant.Padding.Top.default)
+            .padding(.bottom, Constant.Padding.Bottom.default)
+            .padding(.horizontal, Constant.Padding.Horizontal.default)
         }
         .navigationTitle("Drag and Drop - VStack")
         .navigationBarTitleDisplayMode(.inline)
@@ -93,7 +95,7 @@ fileprivate struct DropItemDelegate: DropDelegate {
 
 struct DragAndDropPrototype2View_Previews: PreviewProvider {
     static var previews: some View {
-        DragAndDropVStackExampleView()
+        DragAndDropItemProviderVStackExampleView()
     }
 }
 

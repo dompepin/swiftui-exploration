@@ -7,9 +7,9 @@
 
 import Foundation
 import UniformTypeIdentifiers
+import CoreTransferable
 
 struct Item: Identifiable, Equatable, Hashable, Codable {
-    
     // MARK: Properties
     let id: String
     let title: String
@@ -34,5 +34,11 @@ struct Item: Identifiable, Equatable, Hashable, Codable {
     }
 }
 
+// MARK: Transferable
+extension Item: Transferable {
+    static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(for: Item.self, contentType: .appItem)
+    }
+}
 
 

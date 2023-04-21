@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UICompass
+import os.log
 
 class CustomPullToRefreshScrollViewModel: NSObject, ObservableObject, UIGestureRecognizerDelegate {
     // MARK: Enums
@@ -28,10 +29,11 @@ class CustomPullToRefreshScrollViewModel: NSObject, ObservableObject, UIGestureR
         pullToRefreshViewVisibilityOffset = 0
         contentOffset = 0
         pullingProgress = 0
+        Logger.pullToRefresh.debug("ViewModel reseted")
     }
 }
 
-/// This is a scroll view with a custom pull-to-refresh control embeded at the top (instead of using the default Apple version).
+/// This is a scroll view with a custom pull-to-refresh control embedded at the top (instead of using the default Apple version).
 /// ToDo and Issues:
 ///  1) Create a `refreshable()` modifier that can be applied to a `ScrollView()`
 ///  2) See if we can pass the PTR View/Animation
@@ -40,7 +42,8 @@ class CustomPullToRefreshScrollViewModel: NSObject, ObservableObject, UIGestureR
 struct CustomPullToRefreshScrollView<Content: View>: View {
     
     // MARK: Properties
-    private let pullToRefreshThreshold = 75.0
+    private let pullToRefreshUpperThreshold = 75.0
+    private let pullToRefreshLowerThreshold = 1.0 // Sometime, the content offset reset to a really small values (1.4E-14) instead of 0. This prevent the UI from not resetting.
     private let scrollViewCoordinateSpace = "CustomPullToRefreshScrollView"
     private var content: Content
     private var onRefresh: () async-> ()
@@ -52,20 +55,19 @@ struct CustomPullToRefreshScrollView<Content: View>: View {
         ScrollView(.vertical) {
             VStack(spacing: 0) {
                 pullToRefreshView()
-                    .frame(height: pullToRefreshThreshold) // TODO: We should be able to calculate this
+                    .frame(height: pullToRefreshUpperThreshold) // TODO: We should be able to calculate this
                     .offset(y: -viewModel.contentOffset)
                 content
-                    .offset(y: -pullToRefreshThreshold + viewModel.pullToRefreshViewVisibilityOffset)
+                    .offset(y: -pullToRefreshUpperThreshold + viewModel.pullToRefreshViewVisibilityOffset)
             }
             .readOffset(coordinateSpace: scrollViewCoordinateSpace) { offset in
                 viewModel.contentOffset = offset
-                privateLog("Content Offset: \(Int(viewModel.contentOffset))")
+                //Logger.pullToRefresh.debug("Content Offset: \(Int(viewModel.contentOffset))")
                 
                 // If we are pulling but are still not refreshing
                 if viewModel.state == .idle {
                     viewModel.pullToRefreshViewVisibilityOffset = offset
-                    viewModel.pullingProgress = (offset / pullToRefreshThreshold).clamp(between: 0, and: 1)
-                    privateLog(String(format: "Progress: %.2f", viewModel.pullingProgress))
+                    viewModel.pullingProgress = (offset / pullToRefreshUpperThreshold).clamp(between: 0, and: 1)
                     
                     if viewModel.pullingProgress >= 1 {
                         withAnimation {
@@ -78,7 +80,7 @@ struct CustomPullToRefreshScrollView<Content: View>: View {
                 /// If the user was still holding the scroll view down when the refresh routine finished, once they let go,
                 /// we need to reset the view.
                 if viewModel.state == .refreshingDoneButStillPulling &&
-                    viewModel.contentOffset <= 0 {
+                    viewModel.contentOffset < pullToRefreshLowerThreshold {
                     withAnimation {
                         viewModel.reset()
                     }
@@ -91,10 +93,10 @@ struct CustomPullToRefreshScrollView<Content: View>: View {
                 return
             }
             Task {
-                privateLog("onRefresh: Start")
+                Logger.pullToRefresh.log("ℹ️ Started refreshing")
                 await onRefresh()
-                privateLog("onRefresh: Done")
-                if viewModel.contentOffset == 0 {
+                Logger.pullToRefresh.log("ℹ️ Done refreshing")
+                if viewModel.contentOffset < pullToRefreshLowerThreshold {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         viewModel.reset()
                     }
@@ -161,13 +163,6 @@ private struct DoughnutProgressStyle: ProgressViewStyle {
                 .stroke(.blue, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
                 .rotationEffect(.degrees(-90))
     }
-}
-
-/// Logs some information to the console.
-fileprivate func privateLog(_ string: String) {
-#if DEBUG
-   // print(string)
-#endif
 }
 
 // MARK: Preview

@@ -23,7 +23,7 @@ struct CustomPullToRefreshExampleView: View {
         } onRefresh: {
             try? await Task.sleep(seconds: 3)
         }
-        .navigationTitle("Custom Pull-To-Refresh")
+        .navigationTitle("Custom pull-to-refresh")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

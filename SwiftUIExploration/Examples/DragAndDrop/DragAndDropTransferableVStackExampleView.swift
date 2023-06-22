@@ -1,5 +1,5 @@
 //
-//  DragAndDropTransferable.swift
+//  DragAndDropTransferableVStackExampleView.swift
 //  SwiftUIExploration
 //
 //  Created by Dominic Pepin on 2023-04-20.

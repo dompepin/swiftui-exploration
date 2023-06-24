@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
+    /// Adds swipe to delete to the current view
     func swipeToDelete(viewId: String = UUID().uuidString, onDelete: @escaping () -> Void) -> some View {
         return self.modifier(SwipeToDeleteViewModifier(viewId: viewId, onDelete: onDelete))
     }

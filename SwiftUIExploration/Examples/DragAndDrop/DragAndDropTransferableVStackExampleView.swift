@@ -12,8 +12,8 @@ import UICompass
 /// This example explores dragging and dropping within a VStack using the Transferable protocol.
 /// Issues:
 ///  1) We do not know which item we are dragging. This makes it hard to implement any kind of logic
+
 struct DragAndDropTransferableVStackExampleView: View {
-    
     // MARK: Properties
     @State var highlightedItem: Item? = nil
     // This is used because when dragging an item, we get an in followed by an out event.
@@ -35,6 +35,10 @@ struct DragAndDropTransferableVStackExampleView: View {
                 ForEach(items, id: \.self) { item in
                     VStack(spacing: 0){
                         ExampleTitleRow(item.title)
+                            .padding(.horizontal, Constant.Padding.Horizontal.default)
+                            .swipeToDelete {
+                                items.removeAll { $0.id == item.id }
+                            }
                             .scaleEffect(dropViewScaleEffect(item: item, highlightedItem: highlightedItem, isInsertAnimationEnabled: isInsertAnimationEnabled))
                         touchSpacer()
                             .frame(height: dropViewSpacing(item: item, highlightedItem: highlightedItem, isInsertAnimationEnabled: isInsertAnimationEnabled))
@@ -52,7 +56,6 @@ struct DragAndDropTransferableVStackExampleView: View {
             }
             .padding(.top, Constant.Padding.Top.default)
             .padding(.bottom, Constant.Padding.Bottom.default)
-            .padding(.horizontal, Constant.Padding.Horizontal.default)
         }
         .navigationTitle("Drag and Drop - VStack Transferable")
         .navigationBarTitleDisplayMode(.inline)

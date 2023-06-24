@@ -129,7 +129,16 @@ Left to do (issues):
 
 
 
+### Swipe-to-delete
 
+Swipe to delete (or swipe actions) already exist on List. However, if the list doesn't work in your specific scenario, you're left wanting. This is to explore adding back swipe-to-delete on a normal VStack (or LazyVStack).
+
+<img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/SwipeToDeleteExample.gif" width="250">
+
+Left to do (issues):
+
+* The current implementation only works if your row reaches the end of the device. Meaning that if your view is smaller than the device width, you might see the action button even if the view was not swiped.
+* Upgrade this solution so that you can pass any action view you want. This would allow us to implement, for example, a swipe-to-share action.
 
 
 ### Unit-Testing SwiftUI View

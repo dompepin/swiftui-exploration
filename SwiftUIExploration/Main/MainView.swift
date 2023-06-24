@@ -29,6 +29,9 @@ struct MainView: View {
                 MenuItemViewLink("Pulsing activity indicators") {
                     PulsingActivityIndicatorExampleView()
                 }
+                MenuItemViewLink("Swipe to delete") {
+                    SwipeToDeleteExampleView()
+                }
                 MenuItemViewLink("Toggles") {
                     TogglesExampleView()
                 }

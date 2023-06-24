@@ -1,5 +1,5 @@
 //
-//  DragAndDropTransferable.swift
+//  DragAndDropTransferableVStackExampleView.swift
 //  SwiftUIExploration
 //
 //  Created by Dominic Pepin on 2023-04-20.
@@ -10,10 +10,16 @@ import os.log
 import UICompass
 
 /// This example explores dragging and dropping within a VStack using the Transferable protocol.
+/// Issues:
+///  1) We do not know which item we are dragging. This makes it hard to implement any kind of logic
+
 struct DragAndDropTransferableVStackExampleView: View {
-    
     // MARK: Properties
     @State var highlightedItem: Item? = nil
+    // This is used because when dragging an item, we get an in followed by an out event.
+    // This allow us to keep the dragged item highlighted.
+    // There is still an issue if we drop the first item outside a drop area. In that case, nothing gets called and we cannot reset the flag.
+    @State var draggedItem: Item? = nil
     @State var isInsertAnimationEnabled: Bool = false
     @State var items = [
         Item(id: "1", title: "Item 1", category: "Must Do"),
@@ -29,6 +35,10 @@ struct DragAndDropTransferableVStackExampleView: View {
                 ForEach(items, id: \.self) { item in
                     VStack(spacing: 0){
                         ExampleTitleRow(item.title)
+                            .padding(.horizontal, Constant.Padding.Horizontal.default)
+                            .swipeToDelete {
+                                items.removeAll { $0.id == item.id }
+                            }
                             .scaleEffect(dropViewScaleEffect(item: item, highlightedItem: highlightedItem, isInsertAnimationEnabled: isInsertAnimationEnabled))
                         touchSpacer()
                             .frame(height: dropViewSpacing(item: item, highlightedItem: highlightedItem, isInsertAnimationEnabled: isInsertAnimationEnabled))
@@ -46,29 +56,34 @@ struct DragAndDropTransferableVStackExampleView: View {
             }
             .padding(.top, Constant.Padding.Top.default)
             .padding(.bottom, Constant.Padding.Bottom.default)
-            .padding(.horizontal, Constant.Padding.Horizontal.default)
         }
         .navigationTitle("Drag and Drop - VStack Transferable")
         .navigationBarTitleDisplayMode(.inline)
     }
     
     // MARK: Private
-    
-    func makeExampleTitleRowDraggableView(for item: Item) -> some View {
+    private func makeExampleTitleRowDraggableView(for item: Item) -> some View {
         return ExampleTitleRow(item.title)
             .frame(width:250)
             .foregroundColor(.blue)
     }
     
     private func isDropAreaTargeted(dropAreaItem: Item, isInDropArea: Bool) {
+        print("\(isInDropArea ? "IN" : "OUT" ) - dropAreaItem: \(dropAreaItem.title)")
         withAnimation(.linear(duration: 0.2)) {
-            highlightedItem = isInDropArea ? dropAreaItem : nil
+            if isInDropArea {
+                highlightedItem = dropAreaItem
+            } else if draggedItem == nil {
+                draggedItem = dropAreaItem
+            } else {
+                highlightedItem = nil
+            }
         }
     }
     
     func dropAction(_ dropAreaItem: Item, _ draggedItems: [Item]) -> Bool {
         Logger.default.info("ℹ️ Dropping item '\(draggedItems[safe: 0]?.title ?? "")' on item '\(dropAreaItem.title)'")
-        
+        draggedItem = nil
         if draggedItems.count > 1 {
             Logger.default.warning("🟠 Error: Dragging and dropping multiple items is not supported, only the first item will be dropped.")
         }
@@ -125,7 +140,7 @@ struct DragAndDropTransferableVStackExampleView: View {
 
 // MARK: Preview
 
-struct DragAndDropTransferable_Previews: PreviewProvider {
+struct DragAndDropTransferableVStackExampleView_Previews: PreviewProvider {
     static var previews: some View {
         DragAndDropTransferableVStackExampleView()
     }

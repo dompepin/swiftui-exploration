@@ -53,11 +53,13 @@
 		B689204A27BCA01E00EED6A0 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204627BCA01E00EED6A0 /* Triangle.swift */; };
 		B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */; };
 		B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B689204D27BDFA8F00EED6A0 /* View+Size.swift */; };
+		B6AC254E2A41F3E600742BFD /* SwipeToDeleteExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC254D2A41F3E600742BFD /* SwipeToDeleteExampleView.swift */; };
 		B6B2CD7C27F9F0D800356768 /* DayNightToggleKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B2CD7B27F9F0D800356768 /* DayNightToggleKnob.swift */; };
 		B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */; };
 		B6B3823127E62271007FE168 /* TogglesExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B3823027E62271007FE168 /* TogglesExampleView.swift */; };
 		B6BB304928663622005DEECA /* CustomPullToRefreshExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BB304828663622005DEECA /* CustomPullToRefreshExampleView.swift */; };
 		B6C402B328032B280034E50B /* CustomToggleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C402B228032B270034E50B /* CustomToggleUITests.swift */; };
+		B6C543CE2A4727E900325A0D /* SwipeToDeleteViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AC25852A4369B900742BFD /* SwipeToDeleteViewModifier.swift */; };
 		B6C5A62E27DCFDD8007FDF0E /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B6C5A62D27DCFDD8007FDF0E /* SnapshotTesting */; };
 		B6C5A63127DCFE60007FDF0E /* RectangleButtonStyleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63027DCFE5F007FDF0E /* RectangleButtonStyleUITests.swift */; };
 		B6C5A63A27DD06C1007FDF0E /* AssertSnapshot+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C5A63927DD06C1007FDF0E /* AssertSnapshot+Extensions.swift */; };
@@ -164,6 +166,8 @@
 		B689204627BCA01E00EED6A0 /* Triangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		B689204827BCA01E00EED6A0 /* PulsingActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingActivityIndicator.swift; sourceTree = "<group>"; };
 		B689204D27BDFA8F00EED6A0 /* View+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Size.swift"; sourceTree = "<group>"; };
+		B6AC254D2A41F3E600742BFD /* SwipeToDeleteExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToDeleteExampleView.swift; sourceTree = "<group>"; };
+		B6AC25852A4369B900742BFD /* SwipeToDeleteViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeToDeleteViewModifier.swift; sourceTree = "<group>"; };
 		B6B2CD7B27F9F0D800356768 /* DayNightToggleKnob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightToggleKnob.swift; sourceTree = "<group>"; };
 		B6B2CD7D27F9F85F00356768 /* DayNightToggleBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightToggleBackground.swift; sourceTree = "<group>"; };
 		B6B3823027E62271007FE168 /* TogglesExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglesExampleView.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 		B6135C2B27B810A6000F36C6 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				B6AC254C2A41F3CF00742BFD /* SwipeToDelete */,
 				B63E249B29EF837600C63B52 /* Common */,
 				B63E248F29EEE88800C63B52 /* DragAndDrop */,
 				B6068CE0280C8F6900C836C2 /* PullToRefresh */,
@@ -406,6 +411,7 @@
 		B689204227BCA01E00EED6A0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B6C543CD2A47263D00325A0D /* SwipeActions */,
 				B689204727BCA01E00EED6A0 /* ActivityIndicators */,
 				B657058F27C45A7900398427 /* Buttons */,
 				B689204C27BDF96C00EED6A0 /* Extensions */,
@@ -454,6 +460,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		B6AC254C2A41F3CF00742BFD /* SwipeToDelete */ = {
+			isa = PBXGroup;
+			children = (
+				B6AC254D2A41F3E600742BFD /* SwipeToDeleteExampleView.swift */,
+			);
+			path = SwipeToDelete;
+			sourceTree = "<group>";
+		};
 		B6B2CD7627F9DF5D00356768 /* DayNightToggle */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +493,14 @@
 				B6B3823027E62271007FE168 /* TogglesExampleView.swift */,
 			);
 			path = Toggles;
+			sourceTree = "<group>";
+		};
+		B6C543CD2A47263D00325A0D /* SwipeActions */ = {
+			isa = PBXGroup;
+			children = (
+				B6AC25852A4369B900742BFD /* SwipeToDeleteViewModifier.swift */,
+			);
+			path = SwipeActions;
 			sourceTree = "<group>";
 		};
 		B6C5A62C27DCFDD8007FDF0E /* Frameworks */ = {
@@ -678,6 +700,7 @@
 				B6BB304928663622005DEECA /* CustomPullToRefreshExampleView.swift in Sources */,
 				B6B3823127E62271007FE168 /* TogglesExampleView.swift in Sources */,
 				B657059B27CA863600398427 /* ButtonStyle.swift in Sources */,
+				B6AC254E2A41F3E600742BFD /* SwipeToDeleteExampleView.swift in Sources */,
 				B6B2CD7E27F9F85F00356768 /* DayNightToggleBackground.swift in Sources */,
 				B657059427C4899E00398427 /* ButtonsExampleView.swift in Sources */,
 				B63E249229EF7AD200C63B52 /* DragAndDropItemProviderVStackExampleView.swift in Sources */,
@@ -725,6 +748,7 @@
 				B689204A27BCA01E00EED6A0 /* Triangle.swift in Sources */,
 				B689204B27BCA01E00EED6A0 /* PulsingActivityIndicator.swift in Sources */,
 				B689204927BCA01E00EED6A0 /* BottomSheet.swift in Sources */,
+				B6C543CE2A4727E900325A0D /* SwipeToDeleteViewModifier.swift in Sources */,
 				B657059627C88AF600398427 /* RectangleButtonStyle.swift in Sources */,
 				B64A7A1829DBC76200142DCA /* Comparable+Extensions.swift in Sources */,
 				B689204E27BDFA8F00EED6A0 /* View+Size.swift in Sources */,

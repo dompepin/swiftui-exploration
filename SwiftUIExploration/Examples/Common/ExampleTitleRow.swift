@@ -25,6 +25,9 @@ struct ExampleTitleRow: View {
                     .foregroundColor(.white)
                     .padding(.all, 8)
                     .background(Circle())
+                    .onTapGesture {
+                        print("Item \(text) was tapped")
+                    }
             }
         }
         .padding()

@@ -15,7 +15,7 @@ struct SwipeToDeleteExampleView: View {
             VStack {
                 ForEach(items, id: \.self) { item in
                     ExampleTitleRow(item)
-                        .padding(.horizontal, Constant.Padding.Horizontal.default)
+                        .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
                         .swipeToDelete {
                             items.removeAll { $0 == item }
                         }

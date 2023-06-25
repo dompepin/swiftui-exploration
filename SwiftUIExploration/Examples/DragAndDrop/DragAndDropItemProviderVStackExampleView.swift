@@ -7,58 +7,120 @@
 
 import SwiftUI
 import os.log
+import UICompass
 
 /// This example explores dragging and dropping within a VStack using NSItemProvider.
 struct DragAndDropItemProviderVStackExampleView: View {
-    
+    // MARK: Properties
     @State private var draggedItem: Item?
+    @ObservedObject private var viewModel: DragAndDropSectionViewModel = .init(sections: DragAndDropSectionViewModel.exampleSections)
+    @State private var exampleRowSizes: [String:CGSize] = [:]
     
-    @State var items1 = [
-        Item(id: "1", title: "Item 1", category: "Must Do"),
-        Item(id: "2", title: "Item 2", category: "Must Do"),
-        Item(id: "3", title: "Item 3", category: "Must Do"),
-        Item(id: "4", title: "Item 4", category: "Must Do"),
-        Item(id: "5", title: "Item 5", category: "Must Do")
-    ]
-    
+    // MARK: Body
     var body: some View {
-        ScrollView(showsIndicators: false) {
-            LazyVStack(spacing: Constant.Padding.RowSpacing.default) {
-                ForEach(items1, id: \.self) { item in
-                    ExampleTitleRow(item.title)
-                        .onDrag {
-                            draggedItem = item
-                            return NSItemProvider(object: ItemDragObject(item: item))
+        ScrollView {
+            LazyVStack(spacing: 0) {
+                ForEach(viewModel.sections, id: \.id) { section in
+                    sectionHeader(section)
+                    if section.items.count > 0 {
+                        ForEach(section.items, id: \.id) { item in
+                            itemRow(item: item, section: section)
                         }
-                        .onDrop(of: [ItemDragObject.typeIdentifier],
-                                delegate: DropItemDelegate(destinationItem: item, items: $items1, draggedItem: $draggedItem)
-                        )
+                    } else {
+                        emptyDropArea(section: section)
+                    }
                 }
-                Spacer()
             }
-            .padding(.top, Constant.Padding.Top.default)
-            .padding(.bottom, Constant.Padding.Bottom.default)
-            .padding(.horizontal, Constant.Padding.Horizontal.default)
+            .padding(.top, Constant.Padding.Custom.topEdge16)
+            .padding(.bottom, Constant.Padding.Custom.bottomEdge40)
         }
-        .navigationTitle("Drag and Drop - VStack")
+        .navigationTitle("Drag and Drop - NSItemProvider VStack")
         .navigationBarTitleDisplayMode(.inline)
     }
-}
+    
+    // MARK: Private Views
+    
+    private func emptyDropArea(section: Section) -> some View {
+        EmptyDropArea()
+            .onDrop(of: [ItemDragObject.typeIdentifier],
+                    delegate: DropItemDelegate(draggedItem: $draggedItem, ontoItem: nil, ontoSection: section, viewModel: viewModel, rowHeight: 0)
+            )
+    }
+    
+    private func sectionHeader(_ section: Section) -> some View {
+        SectionHeader(section.title)
+    }
+    
+    private func itemRow(item: Item, section: Section) -> some View {
+        VStack(spacing: 0) {
+            if item.id == viewModel.spacerLocation?.item.id,
+               viewModel.spacerLocation?.dropLocation == .top {
+            Color.red
+                .frame(height: 50)
+                .contentShape(Rectangle())
+        }
+                
+        ExampleTitleRow(item.title)
+            .getSize(binding(for: item.id))
+            .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
+            .swipeToDelete {
+                viewModel.delete(item: item)
+            }
+            
+            if item.id == viewModel.spacerLocation?.item.id,
+               viewModel.spacerLocation?.dropLocation == .bottom {
+                Color.blue
+                    .frame(height: 50)
+                    .contentShape(Rectangle())
+            }
+            
+            Color.purple
+                .frame(height: 8)
+            .contentShape(Rectangle())
+            
+        }
+        .background(Color.green)
+        .onDrag {
+            draggedItem = item
+            return NSItemProvider(object: ItemDragObject(item: item))
+        } preview: {
+            ExampleTitleRow(item.title)
+                .dragPreview()
+        }
+        .onDrop(of: [ItemDragObject.typeIdentifier],
+                delegate: DropItemDelegate(draggedItem: $draggedItem, ontoItem: item, ontoSection: nil, viewModel: viewModel, rowHeight: binding(for: item.id).height.wrappedValue)
+        )
+    }
+    
+    private func binding(for key: String) -> Binding<CGSize> {
+            return .init(
+                get: { self.exampleRowSizes[key, default: .zero] },
+                set: { self.exampleRowSizes[key] = $0 })
+        }}
 
 // MARK: DropItemDelegate
 
 fileprivate struct DropItemDelegate: DropDelegate {
     
     // MARK: Properties
-    let destinationItem: Item
-    @Binding var items: [Item]
-    @Binding var draggedItem: Item?
+    private let viewModel: DragAndDropSectionViewModel
+    private let destinationItem: Item?
+    private let destinationSection: Section?
+    @Binding private var draggedItem: Item?
+    private let rowHeight: CGFloat
+    
     
     // MARK: Lifecycle
-    init(destinationItem: Item, items: Binding<[Item]>, draggedItem: Binding<Item?>) {
+    init(draggedItem: Binding<Item?>,
+         ontoItem destinationItem: Item?,
+         ontoSection destinationSection: Section?,
+         viewModel: DragAndDropSectionViewModel,
+         rowHeight: CGFloat) {
         self.destinationItem = destinationItem
-        self._items = items
+        self.destinationSection = destinationSection
+        self.viewModel = viewModel
         self._draggedItem = draggedItem
+        self.rowHeight = rowHeight
     }
     
     // MARK: DropDelegate
@@ -67,27 +129,62 @@ fileprivate struct DropItemDelegate: DropDelegate {
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        return DropProposal(operation: .move)
+        guard let destinationItem else {
+            return DropProposal(operation: .cancel)
+        }
+        let dropLocation = calculateDropLocation(y: info.location.y, height: rowHeight)
+        print ("Location \(dropLocation)")
+        withAnimation {
+            viewModel.addDropLocation(to: destinationItem, dropLocation: dropLocation)
+        }
+        
+//        viewModel.highlightSection
+        return DropProposal(operation: .copy) // Adds the "+" next to the dragged cell
     }
     
     func dropEntered(info: DropInfo) {
-        guard let draggedItem,
-              let fromIndex = items.firstIndex(of: draggedItem),
-              let toIndex = items.firstIndex(of: destinationItem) else {
-            return
-        }
         
-        if fromIndex != toIndex {
-            withAnimation {
-                self.items.move(fromOffsets: IndexSet(integer: fromIndex),
-                                toOffset: (toIndex > fromIndex ? (toIndex + 1) : toIndex))
-            }
-        }
     }
     
     func performDrop(info: DropInfo) -> Bool {
+//        Log.debugHighlighted("\(info.location.y) in \(rowHeight)")
+        guard let localDraggedItem =  draggedItem else {
+            Log.warning("No item to drop.", .dragAndDrop)
+            return false
+        }
+        withAnimation {
+            if let destinationItem {
+                viewModel.drop(item: localDraggedItem,
+                               onto: destinationItem,
+                               dropLocation: calculateDropLocation(y: info.location.y, height: rowHeight))
+            } else if let destinationSection {
+                viewModel.drop(item: localDraggedItem, onto: destinationSection)
+            } else {
+                assertionFailure("Missing destination item or section")
+                Log.warning("Missing destination item or section")
+            }
+            
+        }
         draggedItem = nil
         return true
+    }
+    
+    func dropExited(info: DropInfo) {
+        guard let destinationItem else {
+            return
+        }
+        withAnimation {
+            viewModel.addDropLocation(to: destinationItem, dropLocation: .unknown)
+        }
+    }
+    
+    private func calculateDropLocation(y: CGFloat, height: CGFloat) -> RowDropLocation {
+        let center = height / 2
+        if y <= center {
+            return .top
+        } else {
+            return .bottom
+        }
     }
 }
 

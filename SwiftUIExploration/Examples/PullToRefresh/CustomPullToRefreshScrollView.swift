@@ -29,7 +29,7 @@ class CustomPullToRefreshScrollViewModel: NSObject, ObservableObject, UIGestureR
         pullToRefreshViewVisibilityOffset = 0
         contentOffset = 0
         pullingProgress = 0
-        Logger.pullToRefresh.debug("ViewModel reseted")
+        Log.debug("ViewModel reseted", .pullToRefresh)
     }
 }
 
@@ -62,7 +62,7 @@ struct CustomPullToRefreshScrollView<Content: View>: View {
             }
             .readOffset(coordinateSpace: scrollViewCoordinateSpace) { offset in
                 viewModel.contentOffset = offset
-                //Logger.pullToRefresh.debug("Content Offset: \(Int(viewModel.contentOffset))")
+                //Log.debug("Content Offset: \(Int(viewModel.contentOffset))", category: .pullToRefresh)
                 
                 // If we are pulling but are still not refreshing
                 if viewModel.state == .idle {
@@ -93,9 +93,9 @@ struct CustomPullToRefreshScrollView<Content: View>: View {
                 return
             }
             Task {
-                Logger.pullToRefresh.log("ℹ️ Started refreshing")
+                Log.debug("Started refreshing", .pullToRefresh)
                 await onRefresh()
-                Logger.pullToRefresh.log("ℹ️ Done refreshing")
+                Log.debug("Done refreshing", .pullToRefresh)
                 if viewModel.contentOffset < pullToRefreshLowerThreshold {
                     withAnimation(.easeInOut(duration: 0.25)) {
                         viewModel.reset()

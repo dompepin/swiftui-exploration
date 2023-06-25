@@ -9,7 +9,7 @@ import Foundation
 import UniformTypeIdentifiers
 import CoreTransferable
 
-struct Item: Identifiable, Equatable, Hashable, Codable {
+struct Item: Equatable, Codable {
     // MARK: Properties
     let id: String
     let title: String

@@ -75,11 +75,11 @@ Left to do (and issues):
 
 ### Drag and Drop
 
-Exploring the ability to do drag and drop custom objects.
+Exploring the ability to do drag and drop custom objects between sections of a list or different lists.
 
 ##### Drag and dropping between Lists
 
-Drag and Drop is supported by default within a lists, this example explores the ability to drag and drop an object/row between lists.
+Drag and Drop is supported by default within a lists (not between sections of the same list), so this example explores the ability to drag and drop an object/row between lists.
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropBetweenListsExample.gif" width="250">
 
@@ -87,47 +87,41 @@ Pros:
 * You keep what the list offers by default: Move, re-order, delete, edit button.
 * iOS15+
  
-Cons: 
-* You are limited with how you can render the cell
+Cons:  
+* Cannot drag and drop between sections of the same list.
+* Having multiple lists on the same view does not offer a great user experience.
+* Cannot choose how to render the view you are dragging.
 
 ##### Drag and dropping using a VStack and NSItemProvider
 
-This example explores adding drag and drop to a LazyVStack (Since 'LIST' offer limited ways to customize their rows). 
+This example explores adding drag and drop to a LazyVStack using NSItemProvider 
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropItemProviderVStackExampleView.gif" width="250">
 
 Pros:
-* You can have any cell design you like.
 * iOS15+
 
 Cons:
 * You lose some of the out-of-the box functionality of the list: delete, move, edit.
 * I could not get the drop action to recognize the Item UType. This issue was addressed by storing the dragged item in the drag closure.
-* I could not get the insert '+' to show up when dragging.
-
-Left to do (issues): 
-* Drag and drop between VStack or another external source (ie. string from Safari)
+* Cannot choose how to render the view you are dragging.
 
 ##### Drag and dropping using a VStack and Transferable
 
-This example explores adding drag and drop to a LazyVStack using Transferable instead of NSItemProvider. 
+This example explores adding drag and drop to a LazyVStack using Transferable instead of NSItemProvider. I updated the logic to drag and drop between 
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropTransferableVStackExampleView.gif" width="250">
 
 Pros:
-* You can have any cell design you like.
 * You have control over the layout of the item you are dragging, so you can be super creative here.
 * Easier/simpler to use than NSItemProvider
+* You can drag between sections (since you have control over everything)
 
 Cons:
 * You lose some of the out-of-the box functionality of the list: delete, move, edit.
 * The API is missing a way to tell us which item we are dragging. This is not a problem when dragging and dropping to a fix area. However, it is hard to mimic the `List` move functionality. You can do it, but the result were not great.
+* Less flexible than the NSItemProvider API other then having the ability to render the dragged view as you like.
 * iOS16+
-
-Left to do (issues): 
-* Drag and drop between VStack or another external source (ie. string from Safari)
-
-
 
 ### Swipe-to-delete
 

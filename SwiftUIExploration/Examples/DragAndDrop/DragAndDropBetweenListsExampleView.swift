@@ -32,7 +32,7 @@ struct DragAndDropBetweenListsExampleView: View {
     
     // MARK: Body
     var body: some View {
-        VStack(spacing: Constant.Padding.RowSpacing.default) {
+        VStack(spacing: Constant.Padding.Custom.outerEdge16) {
             DropList(title: "List 1", items: $items1) { droppedItem, index in
                 items1.insert(droppedItem, at: index)
                 items2.removeAll { $0 == droppedItem }
@@ -50,8 +50,8 @@ struct DragAndDropBetweenListsExampleView: View {
             }
             Spacer()
         }
-        .padding(.top, Constant.Padding.Top.default)
-        .padding(.bottom, Constant.Padding.Bottom.default)
+        .padding(.top, Constant.Padding.Custom.topEdge16)
+        .padding(.bottom, Constant.Padding.Custom.bottomEdge40)
         .navigationBarItems(trailing: EditButton())
         .navigationTitle("Drag and Drop - List")
         .navigationBarTitleDisplayMode(.inline)
@@ -75,7 +75,7 @@ fileprivate struct DropList: View {
                 .font(.headline)
             if items.count > 0 {
                 List {
-                    ForEach(items, id: \.self) { item in
+                    ForEach(items, id: \.id) { item in
                         HStack {
                             Text(item.title)
                             Spacer()
@@ -90,7 +90,7 @@ fileprivate struct DropList: View {
                 }
                 .listStyle(.plain)
             } else {
-                EmptyListDropArea("You can drop that item here 😊")
+                EmptyDropArea()
                     .onDrop(of: [ItemDragObject.typeIdentifier, UTType.text.identifier], isTargeted: nil, perform: dropItemInEmptyList)
             }
         }
@@ -121,11 +121,11 @@ fileprivate struct DropList: View {
                 // An Item was dropped
                 _ = itemProvider.loadObject(ofClass: ItemDragObject.self) { itemDragObject, error in
                     if let error = error {
-                        Logger.default.error("🔴 Failed to load dropped object: '\(error)'")
+                        Log.error("🔴 Failed to load dropped object: '\(error)'")
                     } else if let itemDragObject = itemDragObject as? ItemDragObject {
                         executeDroppedAction(item: itemDragObject.item, index: index)
                     } else {
-                        Logger.dragAndDrop.warning("🟠 No item object was passed as part of the drop action.")
+                        Log.warning("🟠 No item object was passed as part of the drop action.", .dragAndDrop)
                     }
                 }
             }
@@ -133,16 +133,16 @@ fileprivate struct DropList: View {
                 // Some text was dropped (This can happen on a iPad in split view)
                 _ = itemProvider.loadObject(ofClass: String.self) { string, error in
                     if let error = error {
-                        Logger.default.error("🔴 Failed to load dropped string: '\(error)'")
+                        Log.error("🔴 Failed to load dropped string: '\(error)'")
                     } else if let string {
                         executeDroppedAction(item: Item(title: string, category: "Default"), index: index)
                     } else {
-                        Logger.dragAndDrop.warning("🟠 No string was passed as part of the drop action.")
+                        Log.warning("🟠 No string was passed as part of the drop action.", .dragAndDrop)
                     }
                 }
             }
             else {
-                Logger.dragAndDrop.warning("🟠 Drop type not supported")
+                Log.warning("🟠 Drop type not supported", .dragAndDrop)
             }
         }
     }
@@ -152,38 +152,6 @@ fileprivate struct DropList: View {
         return true
     }
 }
-
-// MARK: EmptyListDropArea
-
-struct EmptyListDropArea: View {
-    var text: String
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-                Text(text)
-                    .padding(10)
-                Spacer()
-            }
-            Spacer()
-        }
-        .background(Color(.systemBackground))
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(style: StrokeStyle(lineWidth: 2, dash: [5]))
-        )
-        .padding(Constant.Padding.Horizontal.default)
-        .padding(.top, Constant.Padding.Top.default)
-        .padding(.bottom, Constant.Padding.Bottom.default)
-    }
-    
-    init(_ text: String) {
-        self.text = text
-    }
-}
-
 
 // MARK:  Preview
 

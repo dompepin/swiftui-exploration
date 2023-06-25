@@ -43,6 +43,15 @@ struct ExampleTitleRow: View {
     }
 }
 
+
+extension ExampleTitleRow {
+    /// Applies the drag and drop modifier
+    func dragPreview() -> some View {
+        self.frame(width:250)
+            .foregroundColor(.blue)
+    }
+}
+
 struct PullToRefreshExampleRow_Previews: PreviewProvider {
     static var previews: some View {
         ExampleTitleRow("Hello World!")

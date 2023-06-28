@@ -1,7 +1,4 @@
 //
-//  DragAndDropItemProviderVStackExampleView.swift
-//  ToDoPad
-//
 //  Created by Dominic Pepin on 2023-04-16.
 //
 
@@ -12,9 +9,7 @@ import UICompass
 /// This example explores dragging and dropping within a VStack using NSItemProvider.
 struct DragAndDropItemProviderVStackExampleView: View {
     // MARK: Properties
-    @State private var draggedItem: Item?
     @ObservedObject private var viewModel: DragAndDropSectionViewModel = .init(sections: DragAndDropSectionViewModel.exampleSections)
-    @State private var exampleRowSizes: [String:CGSize] = [:]
     
     // MARK: Body
     var body: some View {
@@ -25,14 +20,18 @@ struct DragAndDropItemProviderVStackExampleView: View {
                     if section.items.count > 0 {
                         ForEach(section.items, id: \.id) { item in
                             itemRow(item: item, section: section)
+                                .tag(item.id)
                         }
                     } else {
-                        emptyDropArea(section: section)
+                        emptySectionDropArea(section: section)
                     }
                 }
             }
             .padding(.top, Constant.Padding.Custom.topEdge16)
             .padding(.bottom, Constant.Padding.Custom.bottomEdge40)
+            .onAppear {
+                viewModel.resetSections(DragAndDropSectionViewModel.exampleSections)
+            }
         }
         .navigationTitle("Drag and Drop - NSItemProvider VStack")
         .navigationBarTitleDisplayMode(.inline)
@@ -40,63 +39,63 @@ struct DragAndDropItemProviderVStackExampleView: View {
     
     // MARK: Private Views
     
-    private func emptyDropArea(section: Section) -> some View {
+    private func emptySectionDropArea(section: DDSection) -> some View {
         EmptyDropArea()
+            .scaleEffect(section.id == viewModel.highlightedEmptySection?.id ? 1.03 : 1)
+            .foregroundColor(section.id == viewModel.highlightedEmptySection?.id ? .blue : .black)
+            .contentShape(Rectangle())
             .onDrop(of: [ItemDragObject.typeIdentifier],
-                    delegate: DropItemDelegate(draggedItem: $draggedItem, ontoItem: nil, ontoSection: section, viewModel: viewModel, rowHeight: 0)
+                    delegate: DropItemDelegate(ontoItem: nil,
+                                               ontoSection: section,
+                                               viewModel: viewModel)
             )
     }
     
-    private func sectionHeader(_ section: Section) -> some View {
+    private func sectionHeader(_ section: DDSection) -> some View {
         SectionHeader(section.title)
+            .padding(.top, Constant.Padding.large16)
+            .padding(.bottom, Constant.Padding.large16)
     }
-    
-    private func itemRow(item: Item, section: Section) -> some View {
+
+    private func itemRow(item: DDItem, section: DDSection) -> some View {
         VStack(spacing: 0) {
-            if item.id == viewModel.spacerLocation?.item.id,
-               viewModel.spacerLocation?.dropLocation == .top {
-            Color.red
-                .frame(height: 50)
-                .contentShape(Rectangle())
-        }
+            rowDropArea(item: item, dropLocation: .top)
+            ExampleTitleRow(item.title)
+                .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
+                .swipeToDelete {
+                    viewModel.delete(item: item)
+                }
+                .padding(.bottom, Constant.Padding.Custom.rowSpacing8)
+            //.opacity(viewModel.draggedItem?.id == item.id ? 0.20: 1) // TODO: Investigate more as to why this is not working.
+                .getSize(viewModel.rowHeightBinding(for: item))
                 
-        ExampleTitleRow(item.title)
-            .getSize(binding(for: item.id))
-            .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
-            .swipeToDelete {
-                viewModel.delete(item: item)
-            }
-            
-            if item.id == viewModel.spacerLocation?.item.id,
-               viewModel.spacerLocation?.dropLocation == .bottom {
-                Color.blue
-                    .frame(height: 50)
-                    .contentShape(Rectangle())
-            }
-            
-            Color.purple
-                .frame(height: 8)
-            .contentShape(Rectangle())
-            
+            rowDropArea(item: item, dropLocation: .bottom)
         }
-        .background(Color.green)
+        .contentShape(Rectangle())
         .onDrag {
-            draggedItem = item
+            viewModel.onDrag(item: item)
             return NSItemProvider(object: ItemDragObject(item: item))
         } preview: {
             ExampleTitleRow(item.title)
                 .dragPreview()
         }
         .onDrop(of: [ItemDragObject.typeIdentifier],
-                delegate: DropItemDelegate(draggedItem: $draggedItem, ontoItem: item, ontoSection: nil, viewModel: viewModel, rowHeight: binding(for: item.id).height.wrappedValue)
+                delegate: DropItemDelegate(ontoItem: item,
+                                           ontoSection: nil,
+                                           viewModel: viewModel)
         )
     }
     
-    private func binding(for key: String) -> Binding<CGSize> {
-            return .init(
-                get: { self.exampleRowSizes[key, default: .zero] },
-                set: { self.exampleRowSizes[key] = $0 })
-        }}
+    @ViewBuilder
+    private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
+        if let rowDropArea = viewModel.rowDropArea,
+           rowDropArea.item.id == item.id,
+           rowDropArea.dropLocation == dropLocation {
+            Color.clear
+                .frame(height: rowDropArea.height)
+        }
+    }
+}
 
 // MARK: DropItemDelegate
 
@@ -104,93 +103,75 @@ fileprivate struct DropItemDelegate: DropDelegate {
     
     // MARK: Properties
     private let viewModel: DragAndDropSectionViewModel
-    private let destinationItem: Item?
-    private let destinationSection: Section?
-    @Binding private var draggedItem: Item?
-    private let rowHeight: CGFloat
-    
-    
+    private let destinationItem: DDItem?
+    private let destinationSection: DDSection?
+        
     // MARK: Lifecycle
-    init(draggedItem: Binding<Item?>,
-         ontoItem destinationItem: Item?,
-         ontoSection destinationSection: Section?,
-         viewModel: DragAndDropSectionViewModel,
-         rowHeight: CGFloat) {
+    init(ontoItem destinationItem: DDItem?,
+         ontoSection destinationSection: DDSection?,
+         viewModel: DragAndDropSectionViewModel) {
         self.destinationItem = destinationItem
         self.destinationSection = destinationSection
         self.viewModel = viewModel
-        self._draggedItem = draggedItem
-        self.rowHeight = rowHeight
     }
     
     // MARK: DropDelegate
     func validateDrop(info: DropInfo) -> Bool {
-        return draggedItem != nil
+        return viewModel.draggedItem != nil
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        guard let destinationItem else {
-            return DropProposal(operation: .cancel)
-        }
-        let dropLocation = calculateDropLocation(y: info.location.y, height: rowHeight)
-        print ("Location \(dropLocation)")
         withAnimation {
-            viewModel.addDropLocation(to: destinationItem, dropLocation: dropLocation)
+            if let destinationItem {
+                viewModel.onHover(over: destinationItem, atLocation: info.location)
+            } else if let destinationSection{
+                viewModel.onHover(emptySection: destinationSection)
+            }
         }
-        
-//        viewModel.highlightSection
         return DropProposal(operation: .copy) // Adds the "+" next to the dragged cell
     }
     
     func dropEntered(info: DropInfo) {
-        
     }
     
+    func dropExited(info: DropInfo) {
+        withAnimation {
+            if let destinationItem {
+                viewModel.onHoverExited(dropItem: destinationItem)
+            }
+            else if let destinationSection {
+                viewModel.onHoverExited(emptySection: destinationSection)
+            }
+        }
+    }
+    
+    // MARK: Private
     func performDrop(info: DropInfo) -> Bool {
-//        Log.debugHighlighted("\(info.location.y) in \(rowHeight)")
-        guard let localDraggedItem =  draggedItem else {
-            Log.warning("No item to drop.", .dragAndDrop)
+        guard let draggedItem =  viewModel.draggedItem else {
+            Log.warning("No item to drag and drop.", .dragAndDrop)
             return false
         }
         withAnimation {
             if let destinationItem {
-                viewModel.drop(item: localDraggedItem,
-                               onto: destinationItem,
-                               dropLocation: calculateDropLocation(y: info.location.y, height: rowHeight))
+                viewModel.onDrop(item: draggedItem,
+                                 onto: destinationItem,
+                                 atLocation: info.location)
             } else if let destinationSection {
-                viewModel.drop(item: localDraggedItem, onto: destinationSection)
+                viewModel.onDrop(item: draggedItem, onto: destinationSection)
             } else {
                 assertionFailure("Missing destination item or section")
                 Log.warning("Missing destination item or section")
             }
             
         }
-        draggedItem = nil
+        viewModel.draggedItem = nil
         return true
-    }
-    
-    func dropExited(info: DropInfo) {
-        guard let destinationItem else {
-            return
-        }
-        withAnimation {
-            viewModel.addDropLocation(to: destinationItem, dropLocation: .unknown)
-        }
-    }
-    
-    private func calculateDropLocation(y: CGFloat, height: CGFloat) -> RowDropLocation {
-        let center = height / 2
-        if y <= center {
-            return .top
-        } else {
-            return .bottom
-        }
     }
 }
 
-// MARK: Private
+// MARK: Preview
 
-struct DragAndDropPrototype2View_Previews: PreviewProvider {
+struct DragAndDropItemProviderVStackExampleView_Previews: PreviewProvider {
     static var previews: some View {
         DragAndDropItemProviderVStackExampleView()
     }

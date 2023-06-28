@@ -14,13 +14,13 @@ struct DragAndDropExamplesView: View {
     
     var body: some View {
         List {
-            MenuItemViewLink("Between lists with NSItemProvider") {
+            MenuItemViewLink("Lists with NSItemProvider") {
                 DragAndDropBetweenListsExampleView()
             }
             MenuItemViewLink("VStack with NSItemProvider") {
                 DragAndDropItemProviderVStackExampleView()
             }
-            MenuItemViewLink("Drag and drop with Transferable") {
+            MenuItemViewLink("VStack with Transferable") {
                 DragAndDropTransferableVStackExampleView()
             }
         }

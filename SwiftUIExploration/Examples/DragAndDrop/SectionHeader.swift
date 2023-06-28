@@ -18,10 +18,13 @@ struct SectionHeader: View {
                     .font(.title)
                 Spacer()
             }
-            .padding(Constant.Padding.medium12)
+            .padding(Constant.Padding.large16)
             .background(
                 Color(UIColor.secondarySystemBackground)
                 .cornerRadius(8, corners: .allCorners))
+            .background(RoundedRectangle(cornerRadius: 4.0)
+                .foregroundColor(.white)
+                .shadow(color: .gray, radius: 8, x: 0, y: 8))
             .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
             
         }

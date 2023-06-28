@@ -75,11 +75,11 @@ Left to do (and issues):
 
 ### Drag and Drop
 
-Exploring the ability to do drag and drop custom objects between sections of a list or different lists.
+The SwiftUI List does not support drag and dropping rows between sections of the same list. We are exploring alternative on how we could do this.
 
 ##### Drag and dropping between Lists
 
-Drag and Drop is supported by default within a lists (not between sections of the same list), so this example explores the ability to drag and drop an object/row between lists.
+This example explores the ability to drag and drop an object/row between lists.
 
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropBetweenListsExample.gif" width="250">
 
@@ -90,7 +90,6 @@ Pros:
 Cons:  
 * Cannot drag and drop between sections of the same list.
 * Having multiple lists on the same view does not offer a great user experience.
-* Cannot choose how to render the view you are dragging.
 
 ##### Drag and dropping using a VStack and NSItemProvider
 
@@ -99,12 +98,13 @@ This example explores adding drag and drop to a LazyVStack using NSItemProvider
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropItemProviderVStackExampleView.gif" width="250">
 
 Pros:
+* Lots of control over drag animations
+* You control the layout of the item you are dragging.
+* You can drag between sections
 * iOS15+
 
 Cons:
 * You lose some of the out-of-the box functionality of the list: delete, move, edit.
-* I could not get the drop action to recognize the Item UType. This issue was addressed by storing the dragged item in the drag closure.
-* Cannot choose how to render the view you are dragging.
 
 ##### Drag and dropping using a VStack and Transferable
 
@@ -113,14 +113,15 @@ This example explores adding drag and drop to a LazyVStack using Transferable in
 <img src="https://github.com/dompepin/swiftui-exploration/blob/main/Documentation/ExamplesImages/DragAndDropTransferableVStackExampleView.gif" width="250">
 
 Pros:
-* You have control over the layout of the item you are dragging, so you can be super creative here.
-* Easier/simpler to use than NSItemProvider
-* You can drag between sections (since you have control over everything)
+* Transferable protocol is easier than NSItemProvider
+* You control the layout of the item you are dragging.
+* You can drag between sections
 
 Cons:
+* Transferable protocol is really more limiting than NSItemProvider approach and therefore restrict what you can do. 
+  * Missing hover location.
+  * Missing ability to figure out which item you are dragging
 * You lose some of the out-of-the box functionality of the list: delete, move, edit.
-* The API is missing a way to tell us which item we are dragging. This is not a problem when dragging and dropping to a fix area. However, it is hard to mimic the `List` move functionality. You can do it, but the result were not great.
-* Less flexible than the NSItemProvider API other then having the ability to render the dragged view as you like.
 * iOS16+
 
 ### Swipe-to-delete

@@ -1,7 +1,4 @@
 //
-//  DragAndDropBetweenListExampleView.swift
-//  ToDoPad
-//
 //  Created by Dominic Pepin on 2023-04-16.
 //
 
@@ -17,17 +14,17 @@ struct DragAndDropBetweenListsExampleView: View {
     
     // MARK: Properties
     @State var items1 = [
-        Item(id: "1", title: "Item 1", category: "Must Do"),
-        Item(id: "2", title: "Item 2", category: "Must Do"),
-        Item(id: "3", title: "Item 3", category: "Must Do"),
-        Item(id: "4", title: "Item 4", category: "Must Do")
+        DDItem(id: "1", title: "Item 1"),
+        DDItem(id: "2", title: "Item 2"),
+        DDItem(id: "3", title: "Item 3"),
+        DDItem(id: "4", title: "Item 4")
     ]
-    @State var items2: [Item] = []
+    @State var items2: [DDItem] = []
     @State var items3 = [
-        Item(id: "Emo1", title: "Item 🤪", category: "Not a Chance"),
-        Item(id: "Emo2", title: "Item 😂", category: "Not a Chance"),
-        Item(id: "Emo3", title: "Item 😳", category: "Not a Chance"),
-        Item(id: "Emo4", title: "Item 😉", category: "Not a Chance")
+        DDItem(id: "Emo1", title: "Item 🤪"),
+        DDItem(id: "Emo2", title: "Item 😂"),
+        DDItem(id: "Emo3", title: "Item 😳"),
+        DDItem(id: "Emo4", title: "Item 😉")
     ]
     
     // MARK: Body
@@ -61,11 +58,11 @@ struct DragAndDropBetweenListsExampleView: View {
 // MARK: DropList
 
 fileprivate struct DropList: View {
-    typealias DropAction = ((_ item: Item, _ index: Int) -> Void)
+    typealias DropAction = ((_ item: DDItem, _ index: Int) -> Void)
     
     // MARK: Properties
     private var title: String
-    @Binding private var items: [Item]
+    @Binding private var items: [DDItem]
     private let droppedAction: DropAction
     
     // MARK: Body
@@ -76,13 +73,13 @@ fileprivate struct DropList: View {
             if items.count > 0 {
                 List {
                     ForEach(items, id: \.id) { item in
-                        HStack {
-                            Text(item.title)
-                            Spacer()
-                        }
-                        .cornerRadius(4)
+                        ExampleTitleRow(item.title)
+                            .listRowSeparator(.hidden)
                         .onDrag {
                             NSItemProvider(object: ItemDragObject(item: item))
+                        } preview: {
+                            ExampleTitleRow(item.title)
+                                .dragPreview()
                         }
                     }
                     .onMove(perform: moveItem)
@@ -97,7 +94,7 @@ fileprivate struct DropList: View {
     }
 
     // MARK: Lifecycle
-    init(title: String, items: Binding<[Item]>, droppedAction: @escaping DropAction) {
+    init(title: String, items: Binding<[DDItem]>, droppedAction: @escaping DropAction) {
         self.title = title
         self._items = items
         self.droppedAction = droppedAction
@@ -105,7 +102,7 @@ fileprivate struct DropList: View {
     
     // MARK: Private
     
-    private func executeDroppedAction(item: Item, index: Int) {
+    private func executeDroppedAction(item: DDItem, index: Int) {
         DispatchQueue.main.async {
             droppedAction(item, index)
         }
@@ -135,7 +132,7 @@ fileprivate struct DropList: View {
                     if let error = error {
                         Log.error("🔴 Failed to load dropped string: '\(error)'")
                     } else if let string {
-                        executeDroppedAction(item: Item(title: string, category: "Default"), index: index)
+                        executeDroppedAction(item: DDItem(id: UUID().uuidString, title: string), index: index)
                     } else {
                         Log.warning("🟠 No string was passed as part of the drop action.", .dragAndDrop)
                     }

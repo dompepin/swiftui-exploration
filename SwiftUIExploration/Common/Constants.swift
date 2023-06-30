@@ -9,20 +9,17 @@ import Foundation
 
 enum Constant {
     enum Padding {
-        enum Horizontal {
-            static let `default`: CGFloat = 16
-            static let small: CGFloat = 8
-            static let medium: CGFloat = 16
-            static let large: CGFloat = 24
+        enum Custom {
+            static let outerEdge16 = 16.0
+            static let topEdge16 = 16.0
+            static let bottomEdge40 = 40.0
+            static let rowSpacing8: CGFloat = 8
         }
-        enum Top {
-            static let `default`: CGFloat = 16
-        }
-        enum Bottom {
-            static let `default`: CGFloat = 40
-        }
-        enum RowSpacing {
-            static let `default`: CGFloat = 8
-        }
+        
+        static let xSmall4 = 4.0
+        static let small8 = 8.0
+        static let medium12 = 12.0
+        static let large16 = 16.0
+        static let xLarge24 = 24.0
     }
 }

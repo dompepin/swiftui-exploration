@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-//TODO: Use os_log
 public extension View {
 
     /// Logs a message to the console

@@ -11,130 +11,180 @@ import UICompass
 
 /// This example explores dragging and dropping within a VStack using the Transferable protocol.
 /// Issues:
-///  1) We do not know which item we are dragging. This makes it hard to implement any kind of logic
+///  1) We do not know which item we are dragging. This makes it hard to implement any kind of logic. There is a workaround, but it's baking on the fact that the item that is getting dragged gets a in/out event originally.
+///  2) We are not getting the position of the dragged item when hovering over destination item. This prevents us from inserting a drop area between 2 rows.
+///  3) When dropping an item outside a drop area, we are not getting any events. This means we cannot reset all the flags.
 
 struct DragAndDropTransferableVStackExampleView: View {
     // MARK: Properties
-    @State var highlightedItem: Item? = nil
-    // This is used because when dragging an item, we get an in followed by an out event.
-    // This allow us to keep the dragged item highlighted.
-    // There is still an issue if we drop the first item outside a drop area. In that case, nothing gets called and we cannot reset the flag.
-    @State var draggedItem: Item? = nil
-    @State var isInsertAnimationEnabled: Bool = false
-    @State var items = [
-        Item(id: "1", title: "Item 1", category: "Must Do"),
-        Item(id: "2", title: "Item 2", category: "Must Do"),
-        Item(id: "3", title: "Item 3", category: "Must Do"),
-        Item(id: "4", title: "Item 4", category: "Must Do")
-    ]
+    @ObservedObject private var viewModel: DragAndDropSectionViewModel = .init(sections: DragAndDropSectionViewModel.exampleSections)
+    @State private var isInsertAnimationEnabled: Bool = false
     
     // MARK: Body
     var body: some View {
-        ScrollView(showsIndicators: false) {
+        ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(items, id: \.self) { item in
-                    VStack(spacing: 0){
-                        ExampleTitleRow(item.title)
-                            .padding(.horizontal, Constant.Padding.Horizontal.default)
-                            .swipeToDelete {
-                                items.removeAll { $0.id == item.id }
-                            }
-                            .scaleEffect(dropViewScaleEffect(item: item, highlightedItem: highlightedItem, isInsertAnimationEnabled: isInsertAnimationEnabled))
-                        touchSpacer()
-                            .frame(height: dropViewSpacing(item: item, highlightedItem: highlightedItem, isInsertAnimationEnabled: isInsertAnimationEnabled))
-                    }
-                    .draggable(item, preview: {
-                        makeExampleTitleRowDraggableView(for: item)
-                    })
-                    .dropDestination(for: Item.self,
-                                     action: { draggedItems, _ in dropAction(item, draggedItems) },
-                                     isTargeted: { isInDropArea in isDropAreaTargeted(dropAreaItem: item, isInDropArea: isInDropArea) })
-                }
-                Spacer()
                 insertAnimationView()
-                    .padding(.vertical, 16)
+                    .padding(.all, Constant.Padding.Custom.outerEdge16)
+                ForEach(viewModel.sections, id: \.id) { section in
+                    sectionHeader(section)
+                    if section.items.count > 0 {
+                        ForEach(section.items, id: \.id) { item in
+                            itemRow(item: item, section: section)
+                                .tag(item.id)
+                        }
+                    } else {
+                        emptyDropArea(section: section)
+                    }
+                }
             }
-            .padding(.top, Constant.Padding.Top.default)
-            .padding(.bottom, Constant.Padding.Bottom.default)
+            .padding(.top, Constant.Padding.Custom.topEdge16)
+            .padding(.bottom, Constant.Padding.Custom.bottomEdge40)
+            .onAppear {
+                viewModel.resetSections(DragAndDropSectionViewModel.exampleSections)
+            }
         }
         .navigationTitle("Drag and Drop - VStack Transferable")
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    // MARK: Private
-    private func makeExampleTitleRowDraggableView(for item: Item) -> some View {
-        return ExampleTitleRow(item.title)
-            .frame(width:250)
-            .foregroundColor(.blue)
+    // MARK: Private views
+    
+    private func emptyDropArea(section: DDSection) -> some View {
+        EmptyDropArea()
+            .scaleEffect(section.id == viewModel.highlightedEmptySection?.id ? 1.03 : 1)
+            .foregroundColor(section.id == viewModel.highlightedEmptySection?.id ? .blue : .black)
+            .dropDestination(for: DDItem.self,
+                             action: { draggedItems, _ in emptyListDropAction(dropAreaSection: section, draggedItems: draggedItems) },
+                             isTargeted: { isInDropArea in isEmptyListDropAreaTargeted(dropArea: section, isTargeted: isInDropArea) })
     }
     
-    private func isDropAreaTargeted(dropAreaItem: Item, isInDropArea: Bool) {
-        print("\(isInDropArea ? "IN" : "OUT" ) - dropAreaItem: \(dropAreaItem.title)")
-        withAnimation(.linear(duration: 0.2)) {
-            if isInDropArea {
-                highlightedItem = dropAreaItem
-            } else if draggedItem == nil {
-                draggedItem = dropAreaItem
-            } else {
-                highlightedItem = nil
+    private func sectionHeader(_ section: DDSection) -> some View {
+        SectionHeader(section.title)
+            .padding(.top, Constant.Padding.large16)
+            .padding(.bottom, Constant.Padding.large16)
+    }
+    
+    private func itemRow(item: DDItem, section: DDSection) -> some View {
+        VStack(spacing: 0) {
+            if isInsertAnimationEnabled {
+                rowDropArea(item: item, dropLocation: .top)
+            }
+            ExampleTitleRow(item.title)
+                .scaleEffect(!isInsertAnimationEnabled && item.id == viewModel.rowDropArea?.item.id && viewModel.rowDropArea?.dropLocation != RowDropLocation.none ? 1.03: 1)
+                .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
+                .swipeToDelete {
+                    viewModel.delete(item: item)
+                }
+                .padding(.bottom, Constant.Padding.Custom.rowSpacing8)
+                .getSize(viewModel.rowHeightBinding(for: item))
+            if isInsertAnimationEnabled {
+                rowDropArea(item: item, dropLocation: .bottom)
             }
         }
+        .contentShape(Rectangle())
+        .draggable(item, preview: {
+            ExampleTitleRow(item.title)
+                .dragPreview()
+        })
+        .dropDestination(for: DDItem.self,
+                         action: { draggedItems, location in exampleTitleRowDropAction(dropAreaItem: item, draggedItems: draggedItems, location: location) },
+                         isTargeted: { isInDropArea in isExampleTitleRowDropAreaTargeted(dropArea: item, isTargeted: isInDropArea) })
     }
-    
-    func dropAction(_ dropAreaItem: Item, _ draggedItems: [Item]) -> Bool {
-        Logger.default.info("ℹ️ Dropping item '\(draggedItems[safe: 0]?.title ?? "")' on item '\(dropAreaItem.title)'")
-        draggedItem = nil
-        if draggedItems.count > 1 {
-            Logger.default.warning("🟠 Error: Dragging and dropping multiple items is not supported, only the first item will be dropped.")
-        }
+
         
-        guard let draggedItem = draggedItems[safe: 0],
-              let fromIndex = items.firstIndex(of: draggedItem),
-              let toIndex = items.firstIndex(of: dropAreaItem) else {
-            return false
+    @ViewBuilder
+    private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
+        if let rowDropArea = viewModel.rowDropArea,
+           rowDropArea.item.id == item.id,
+           rowDropArea.dropLocation == dropLocation {
+            Color.clear
+                .frame(height: rowDropArea.height)
         }
-
-        if fromIndex != toIndex {
-            withAnimation {
-                self.items.move(fromOffsets: IndexSet(integer: fromIndex),
-                                toOffset: isInsertAnimationEnabled ? toIndex + 1 : (toIndex > fromIndex ? toIndex + 1 : toIndex))
-            }
-        }
-        return true
-    }
-
-    /// Spacer or Color.clear does not allow dropping object. This allow to drop an item between 2 rows.
-    func touchSpacer() -> some View {
-        Color(red: 1, green: 1, blue: 1, opacity: 0.01)
     }
     
     func insertAnimationView() -> some View {
         VStack {
             HStack {
-                Text("Insertion Animation")
+                Text("Insertion Animation (Not Working yet)")
                 Spacer()
                 CustomToggle(isOn: $isInsertAnimationEnabled, config: .systemRoundedRectangle)
                     .frame(width: 60, height: 30)
             }
-            Text("The insertion animation attempts to replicate the 'List' insertion mode. However, there are some ui glitch with its implementation because the `isTargeted` method fails to supply the dragged item and restricts our options. ")
+            Text("The insertion animation cannot fully work because the 'dropDestination:isTargetted' callback does not give us the hover location and therefore we cannot determine if we are hovering at the top of bottom of the row.")
                 .font(.caption)
         }
     }
-    
-    // Define the scale effect of a row based on the animation type and if the drop item is hovering over it or not.
-    func dropViewScaleEffect(item: Item, highlightedItem: Item?, isInsertAnimationEnabled: Bool) -> CGFloat {
+
+    // Define the row spacing based on the animation type and if the drop item is hovering over it or not.
+    func dropViewSpacing(item: DDItem, highlightedItem: DDItem?, isInsertAnimationEnabled: Bool) -> CGFloat {
         if isInsertAnimationEnabled {
-            return 1
+            return item == highlightedItem ? 50 : Constant.Padding.Custom.rowSpacing8
         }
-        return item == highlightedItem ? 1.05 : 1
+        return Constant.Padding.Custom.rowSpacing8
     }
     
-    // Define the row spacing based on the animation type and if the drop item is hovering over it or not.
-    func dropViewSpacing(item: Item, highlightedItem: Item?, isInsertAnimationEnabled: Bool) -> CGFloat {
-        if isInsertAnimationEnabled {
-            return item == highlightedItem ? 50 : Constant.Padding.RowSpacing.default
+    // MARK: Private methods
+    private func isEmptyListDropAreaTargeted(dropArea dropAreaSection: DDSection, isTargeted: Bool) {
+        withAnimation {
+            if isTargeted {
+                viewModel.onHover(emptySection: dropAreaSection)
+            } else {
+                viewModel.onHoverExited(emptySection: dropAreaSection)
+            }
         }
-        return Constant.Padding.RowSpacing.default
+    }
+
+    func emptyListDropAction(dropAreaSection: DDSection, draggedItems: [DDItem]) -> Bool {
+        Log.info("Dropping item '\(draggedItems[safe: 0]?.title ?? "")' on empty section '\(dropAreaSection.title)'", .dragAndDrop)
+        if draggedItems.count > 1 {
+            Log.warning("🟠 Error: Dragging and dropping multiple items is not supported, only the first item will be dropped.")
+        }
+
+        guard let draggedItem = draggedItems[safe: 0] else {
+            Log.warning("No items to drop.", .dragAndDrop)
+            viewModel.onAbort()
+            return false
+        }
+
+        withAnimation {
+            viewModel.onDrop(item: draggedItem, onto: dropAreaSection)
+        }
+
+        return true
+    }
+
+    private func isExampleTitleRowDropAreaTargeted(dropArea dropAreaItem: DDItem, isTargeted: Bool) {
+        withAnimation(.linear(duration: 0.2)) {
+            if isTargeted {
+                viewModel.onHover(over: dropAreaItem, atLocation: .zero)
+            } else if viewModel.draggedItem == nil {
+                // When you initiate the drag action, the row you are dragging will be targeted and this will allow us to
+                // flag it as the dragged item. This is definitely a work around and I would probably not put this in production
+                // code before making sure that if that behaviour change, it will not affect the overall logic.
+                viewModel.onDrag(item: dropAreaItem)
+            } else {
+                viewModel.onHoverExited(dropItem: dropAreaItem)
+            }
+        }
+    }
+
+    func exampleTitleRowDropAction(dropAreaItem: DDItem, draggedItems: [DDItem], location: CGPoint) -> Bool {
+        if draggedItems.count > 1 {
+            Log.warning("Dragging and dropping multiple items is not supported, only the first item will be dropped.")
+        }
+
+        guard let draggedItem = draggedItems[safe: 0] else {
+            viewModel.onAbort()
+            Log.warning("No items to drop.", .dragAndDrop)
+            return false
+        }
+
+        withAnimation {
+            viewModel.onDrop(item: draggedItem, onto: dropAreaItem, atLocation: location)
+        }
+
+        return true
     }
 }
 

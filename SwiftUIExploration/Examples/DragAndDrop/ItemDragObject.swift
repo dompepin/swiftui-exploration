@@ -1,7 +1,4 @@
 //
-//  ItemDragObject.swift
-//  ToDoPad
-//
 //  Created by Dominic Pepin on 2023-04-15.
 //
 
@@ -12,10 +9,10 @@ import UniformTypeIdentifiers
 /// Class that encapsulate an item so that it can be dragged and dropped.
 final class ItemDragObject: NSObject, Codable {
     // MARK: Properties
-    private (set) var item: Item
+    private (set) var item: DDItem
     
     // MARK: Lifecycle
-    init(item: Item) {
+    init(item: DDItem) {
         self.item = item
     }
 }
@@ -38,7 +35,7 @@ extension ItemDragObject: NSItemProviderWriting {
             completionHandler(encodedObject, nil)
         } catch {
             
-            Logger.dragAndDrop.error("🔴 Error Encoding - '\(error)'")
+            Log.error("🔴 Error Encoding - '\(error)'", .dragAndDrop)
             completionHandler(nil, error)
         }
         
@@ -58,7 +55,7 @@ extension ItemDragObject: NSItemProviderReading {
         do {
             return try decoder.decode(ItemDragObject.self, from: data)
         } catch {
-            Logger.dragAndDrop.error("🔴 Error Decoding - '\(error)'")
+            Log.error("🔴 Error Decoding - '\(error)'", .dragAndDrop)
             throw error
         }
     }

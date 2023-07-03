@@ -68,7 +68,7 @@ struct DragAndDropTransferableVStackExampleView: View {
     private func itemRow(item: DDItem, section: DDSection) -> some View {
         DDItemRow(item: item, section: section,
                   viewModel: viewModel,
-                  rowDropArea: $viewModel.rowDropArea,
+                  rowDropArea: viewModel.rowDropArea,
                   isInsertAnimationEnabled: isInsertAnimationEnabled)
         .draggable(item, preview: {
             ExampleTitleRow(item.title)
@@ -82,7 +82,7 @@ struct DragAndDropTransferableVStackExampleView: View {
         
     @ViewBuilder
     private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
-        if let rowDropArea = viewModel.rowDropArea,
+        if let rowDropArea = viewModel.rowDropArea.state,
            rowDropArea.item.id == item.id,
            rowDropArea.dropLocation == dropLocation {
             Color.clear
@@ -125,7 +125,7 @@ struct DragAndDropTransferableVStackExampleView: View {
     func emptyListDropAction(dropAreaSection: DDSection, draggedItems: [DDItem]) -> Bool {
         Log.info("Dropping item '\(draggedItems[safe: 0]?.title ?? "")' on empty section '\(dropAreaSection.title)'", .dragAndDrop)
         if draggedItems.count > 1 {
-            Log.warning("🟠 Error: Dragging and dropping multiple items is not supported, only the first item will be dropped.")
+            Log.warning("Error: Dragging and dropping multiple items is not supported, only the first item will be dropped.")
         }
 
         guard let draggedItem = draggedItems[safe: 0] else {
@@ -188,7 +188,7 @@ fileprivate struct DDItemRow: View {
     var item: DDItem
     var section: DDSection
     var viewModel: DragAndDropSectionViewModel
-    @Binding var rowDropArea: RowDropAreaViewState?
+    @ObservedObject var rowDropArea: RowDropAreaViewModel
     
     var isInsertAnimationEnabled: Bool
     
@@ -198,7 +198,7 @@ fileprivate struct DDItemRow: View {
                 rowDropArea(item: item, dropLocation: .top)
             }
             ExampleTitleRow(item.title)
-                .scaleEffect(!isInsertAnimationEnabled && item.id == rowDropArea?.item.id && rowDropArea?.dropLocation != RowDropLocation.none ? 1.03: 1)
+                .scaleEffect(!isInsertAnimationEnabled && item.id == rowDropArea.state?.item.id && rowDropArea.state?.dropLocation != RowDropLocation.none ? 1.03: 1)
                 .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
                 .swipeToDelete {
                     viewModel.delete(item: item)
@@ -214,7 +214,7 @@ fileprivate struct DDItemRow: View {
     
     @ViewBuilder
     private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
-        if let rowDropArea,
+        if let rowDropArea = rowDropArea.state,
            rowDropArea.item.id == item.id,
            rowDropArea.dropLocation == dropLocation {
             Color.clear

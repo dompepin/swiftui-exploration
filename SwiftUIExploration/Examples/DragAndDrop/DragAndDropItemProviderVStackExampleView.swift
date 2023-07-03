@@ -58,9 +58,11 @@ struct DragAndDropItemProviderVStackExampleView: View {
     }
 
     private func itemRow(item: DDItem, section: DDSection) -> some View {
-        DDItemRow(item: item, section: section, viewModel: viewModel, rowDropArea: $viewModel.rowDropArea, isInsertAnimationEnabled: false)
+        DDItemRow(item: item, section: section, viewModel: viewModel, rowDropArea: viewModel.rowDropArea, isInsertAnimationEnabled: false)
         .onDrag {
-            print("ON DRAG: \(item.title)")
+            Log.debug("On drag `\(item.title)`")
+            // Note: the `.onDrag()` is not called every time. This is not an issue because the view model only use the item to calculate the drop area height.
+            //       A future solution will be to flatten the view model to just have 1 ForEach. This might solve a few issue with the drag and drop.
             viewModel.onDrag(item: item)
             return NSItemProvider(object: ItemDragObject(item: item))
         } preview: {
@@ -76,7 +78,7 @@ struct DragAndDropItemProviderVStackExampleView: View {
     
     @ViewBuilder
     private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
-        if let rowDropArea = viewModel.rowDropArea,
+        if let rowDropArea = viewModel.rowDropArea.state,
            rowDropArea.item.id == item.id,
            rowDropArea.dropLocation == dropLocation {
             Color.clear
@@ -105,13 +107,10 @@ fileprivate struct DropItemDelegate: DropDelegate {
     
     // MARK: DropDelegate
     func validateDrop(info: DropInfo) -> Bool {
-        print("Validate Drop")
-//        return viewModel.draggedItem != nil
-        return true
+        return viewModel.draggedItem != nil
     }
     
     func dropUpdated(info: DropInfo) -> DropProposal? {
-        print("Drop Updated")
         withAnimation {
             if let destinationItem {
                 viewModel.onHover(over: destinationItem, atLocation: info.location)
@@ -123,7 +122,6 @@ fileprivate struct DropItemDelegate: DropDelegate {
     }
     
     func dropEntered(info: DropInfo) {
-        print("Drop Entered")
     }
     
     func dropExited(info: DropInfo) {
@@ -167,9 +165,10 @@ fileprivate struct DropItemDelegate: DropDelegate {
     }
     
     private func loadDragItem(info: DropInfo, completion: @escaping (DDItem?) -> Void) {
-        // TODO: We should iterate through all item providers (instead of just taking the first one)
-        // TODO: Make this code common with the List drag and drop code.
-        // TODO: Remove draggedItem from viewModel
+        // TODO: Future considerations:
+        // 1) We should iterate through all item providers (instead of just taking the first one)
+        // 2) Make this code common with the List drag and drop code.
+        // 3) Remove draggedItem from viewModel
         guard info.hasItemsConforming(to: [ItemDragObject.typeIdentifier]),
               let itemProvider = info.itemProviders(for: [ItemDragObject.typeIdentifier])[safe: 0] else {
             completion(nil)
@@ -177,12 +176,12 @@ fileprivate struct DropItemDelegate: DropDelegate {
         }
         itemProvider.loadObject(ofClass: ItemDragObject.self) { itemDragObject, error in
             if let error = error {
-                Log.error("🔴 Failed to load dropped object: '\(error)'")
+                Log.error("Failed to load dropped object: '\(error)'")
                 completion(nil)
             } else if let itemDragObject = itemDragObject as? ItemDragObject {
                 completion(itemDragObject.item)
             } else {
-                Log.warning("🟠 No item object was passed as part of the drop action.", .dragAndDrop)
+                Log.warning("No item object was passed as part of the drop action.", .dragAndDrop)
                 completion(nil)
             }
         }
@@ -202,7 +201,7 @@ fileprivate struct DDItemRow: View {
     var item: DDItem
     var section: DDSection
     var viewModel: DragAndDropSectionViewModel
-    @Binding var rowDropArea: RowDropAreaViewState?
+    @ObservedObject var rowDropArea: RowDropAreaViewModel
     
     var isInsertAnimationEnabled: Bool
     
@@ -215,7 +214,7 @@ fileprivate struct DDItemRow: View {
                     viewModel.delete(item: item)
                 }
                 .padding(.bottom, Constant.Padding.Custom.rowSpacing8)
-            //.opacity(viewModel.draggedItem?.id == item.id ? 0.20: 1) // TODO: Investigate more as to why this is not working.
+                //.opacity(viewModel.draggedItem?.id == item.id ? 0.20: 1) // TODO: Investigate more as to why this is not working.
                 .getSize(viewModel.rowHeightBinding(for: item))
             
             rowDropArea(item: item, dropLocation: .bottom)
@@ -225,7 +224,7 @@ fileprivate struct DDItemRow: View {
     
     @ViewBuilder
     private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
-        if let rowDropArea = rowDropArea,
+        if let rowDropArea = rowDropArea.state,
            rowDropArea.item.id == item.id,
            rowDropArea.dropLocation == dropLocation {
             Color.clear

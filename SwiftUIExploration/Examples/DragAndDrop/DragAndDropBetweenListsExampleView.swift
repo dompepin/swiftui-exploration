@@ -118,11 +118,11 @@ fileprivate struct DropList: View {
                 // An Item was dropped
                 _ = itemProvider.loadObject(ofClass: ItemDragObject.self) { itemDragObject, error in
                     if let error = error {
-                        Log.error("🔴 Failed to load dropped object: '\(error)'")
+                        Log.error("Failed to load dropped object: '\(error)'")
                     } else if let itemDragObject = itemDragObject as? ItemDragObject {
                         executeDroppedAction(item: itemDragObject.item, index: index)
                     } else {
-                        Log.warning("🟠 No item object was passed as part of the drop action.", .dragAndDrop)
+                        Log.warning("No item object was passed as part of the drop action.", .dragAndDrop)
                     }
                 }
             }
@@ -130,16 +130,16 @@ fileprivate struct DropList: View {
                 // Some text was dropped (This can happen on a iPad in split view)
                 _ = itemProvider.loadObject(ofClass: String.self) { string, error in
                     if let error = error {
-                        Log.error("🔴 Failed to load dropped string: '\(error)'")
+                        Log.error("Failed to load dropped string: '\(error)'")
                     } else if let string {
                         executeDroppedAction(item: DDItem(id: UUID().uuidString, title: string), index: index)
                     } else {
-                        Log.warning("🟠 No string was passed as part of the drop action.", .dragAndDrop)
+                        Log.warning("No string was passed as part of the drop action.", .dragAndDrop)
                     }
                 }
             }
             else {
-                Log.warning("🟠 Drop type not supported", .dragAndDrop)
+                Log.warning("Drop type not supported", .dragAndDrop)
             }
         }
     }

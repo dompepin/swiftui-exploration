@@ -66,23 +66,10 @@ struct DragAndDropTransferableVStackExampleView: View {
     }
     
     private func itemRow(item: DDItem, section: DDSection) -> some View {
-        VStack(spacing: 0) {
-            if isInsertAnimationEnabled {
-                rowDropArea(item: item, dropLocation: .top)
-            }
-            ExampleTitleRow(item.title)
-                .scaleEffect(!isInsertAnimationEnabled && item.id == viewModel.rowDropArea?.item.id && viewModel.rowDropArea?.dropLocation != RowDropLocation.none ? 1.03: 1)
-                .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
-                .swipeToDelete {
-                    viewModel.delete(item: item)
-                }
-                .padding(.bottom, Constant.Padding.Custom.rowSpacing8)
-                .getSize(viewModel.rowHeightBinding(for: item))
-            if isInsertAnimationEnabled {
-                rowDropArea(item: item, dropLocation: .bottom)
-            }
-        }
-        .contentShape(Rectangle())
+        DDItemRow(item: item, section: section,
+                  viewModel: viewModel,
+                  rowDropArea: viewModel.rowDropArea,
+                  isInsertAnimationEnabled: isInsertAnimationEnabled)
         .draggable(item, preview: {
             ExampleTitleRow(item.title)
                 .dragPreview()
@@ -95,7 +82,7 @@ struct DragAndDropTransferableVStackExampleView: View {
         
     @ViewBuilder
     private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
-        if let rowDropArea = viewModel.rowDropArea,
+        if let rowDropArea = viewModel.rowDropArea.state,
            rowDropArea.item.id == item.id,
            rowDropArea.dropLocation == dropLocation {
             Color.clear
@@ -138,7 +125,7 @@ struct DragAndDropTransferableVStackExampleView: View {
     func emptyListDropAction(dropAreaSection: DDSection, draggedItems: [DDItem]) -> Bool {
         Log.info("Dropping item '\(draggedItems[safe: 0]?.title ?? "")' on empty section '\(dropAreaSection.title)'", .dragAndDrop)
         if draggedItems.count > 1 {
-            Log.warning("🟠 Error: Dragging and dropping multiple items is not supported, only the first item will be dropped.")
+            Log.warning("Error: Dragging and dropping multiple items is not supported, only the first item will be dropped.")
         }
 
         guard let draggedItem = draggedItems[safe: 0] else {
@@ -193,5 +180,45 @@ struct DragAndDropTransferableVStackExampleView: View {
 struct DragAndDropTransferableVStackExampleView_Previews: PreviewProvider {
     static var previews: some View {
         DragAndDropTransferableVStackExampleView()
+    }
+}
+
+
+fileprivate struct DDItemRow: View {
+    var item: DDItem
+    var section: DDSection
+    var viewModel: DragAndDropSectionViewModel
+    @ObservedObject var rowDropArea: RowDropAreaViewModel
+    
+    var isInsertAnimationEnabled: Bool
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            if isInsertAnimationEnabled {
+                rowDropArea(item: item, dropLocation: .top)
+            }
+            ExampleTitleRow(item.title)
+                .scaleEffect(!isInsertAnimationEnabled && item.id == rowDropArea.state?.item.id && rowDropArea.state?.dropLocation != RowDropLocation.none ? 1.03: 1)
+                .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
+                .swipeToDelete {
+                    viewModel.delete(item: item)
+                }
+                .padding(.bottom, Constant.Padding.Custom.rowSpacing8)
+                .getSize(viewModel.rowHeightBinding(for: item))
+            if isInsertAnimationEnabled {
+                rowDropArea(item: item, dropLocation: .bottom)
+            }
+        }
+        .contentShape(Rectangle())
+    }
+    
+    @ViewBuilder
+    private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
+        if let rowDropArea = rowDropArea.state,
+           rowDropArea.item.id == item.id,
+           rowDropArea.dropLocation == dropLocation {
+            Color.clear
+                .frame(height: rowDropArea.height)
+        }
     }
 }

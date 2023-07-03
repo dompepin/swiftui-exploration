@@ -35,7 +35,7 @@ extension ItemDragObject: NSItemProviderWriting {
             completionHandler(encodedObject, nil)
         } catch {
             
-            Log.error("🔴 Error Encoding - '\(error)'", .dragAndDrop)
+            Log.error("Error Encoding - '\(error)'", .dragAndDrop)
             completionHandler(nil, error)
         }
         
@@ -55,7 +55,7 @@ extension ItemDragObject: NSItemProviderReading {
         do {
             return try decoder.decode(ItemDragObject.self, from: data)
         } catch {
-            Log.error("🔴 Error Decoding - '\(error)'", .dragAndDrop)
+            Log.error("Error Decoding - '\(error)'", .dragAndDrop)
             throw error
         }
     }

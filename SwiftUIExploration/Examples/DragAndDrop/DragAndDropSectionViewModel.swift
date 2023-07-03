@@ -14,6 +14,20 @@ enum RowDropLocation {
     case bottom
 }
 
+// This is a wrapper around the view state so that item view can listen to changes and redraw properly.
+// If we just use `RowDropAreaViewState` by itself, drop area will not show up. To reproduce the issue:
+// 1) Drag item 1 in section 2
+// 2) Drag item 2 in section 2
+// => At that point you would expect the view to move so you can see where you are inserting item 2. Without this class it's not.
+// Note: Another solution would have been to flatten the view model so that instead of having 2 embedded ForEach, you just have a flat structure.
+class RowDropAreaViewModel: ObservableObject {
+    @Published var state: RowDropAreaViewState?
+    
+    init(state: RowDropAreaViewState?) {
+        self.state = state
+    }
+}
+
 /// Defines where a space should be displayed when dragging and dropping an item
 struct RowDropAreaViewState {
     let item: DDItem
@@ -32,7 +46,7 @@ struct RowDropAreaViewState {
 class DragAndDropSectionViewModel: ObservableObject {
     // MARK: Properties
     @Published private (set) var sections: [DDSection]
-    @Published private (set) var rowDropArea: RowDropAreaViewState? // Defines the spacer that will be inserted before or after a row to simulate making space to drop the dragged item.
+    @Published  var rowDropArea: RowDropAreaViewModel // Defines the spacer that will be inserted before or after a row to simulate making space to drop the dragged item.
     @Published var draggedItem: DDItem?
     @Published var highlightedEmptySection: DDSection? = nil
     private var rowSizes: [String:CGSize] = [:]
@@ -40,6 +54,7 @@ class DragAndDropSectionViewModel: ObservableObject {
     // MARK: Lifecycle
     init(sections: [DDSection]) {
         self.sections = sections
+        self.rowDropArea = .init(state: nil)
     }
     
     // MARK: Public
@@ -71,14 +86,14 @@ class DragAndDropSectionViewModel: ObservableObject {
         let hoverLocation = calculateRowDropLocation(y: location.y,
                                                      draggedRowHeight: draggedItemHeight,
                                                      destinationRowHeight: rowHeightBinding(for: dropItem).height.wrappedValue )
-        rowDropArea = RowDropAreaViewState(item: dropItem,
-                                           dropLocation: hoverLocation,
-                                           height: draggedItemHeight)
+        rowDropArea.state = RowDropAreaViewState(item: dropItem,
+                                                            dropLocation: hoverLocation,
+                                                            height: draggedItemHeight)
     }
     
     /// Gets called when the dragged item is not over another item anymore
     func onHoverExited(dropItem: DDItem) {
-        rowDropArea = RowDropAreaViewState(item: dropItem, dropLocation: .none, height: .zero)
+        rowDropArea.state = RowDropAreaViewState(item: dropItem, dropLocation: .none, height: .zero)
     }
     
     /// Gets called when the dragged item hover over an empty section drop area
@@ -161,7 +176,7 @@ class DragAndDropSectionViewModel: ObservableObject {
     /// Calculates where an item should be inserted based on the position of the dragged item over the destination item.
     private func calculateRowDropLocation(y: CGFloat, draggedRowHeight: CGFloat, destinationRowHeight: CGFloat) -> RowDropLocation {
         var center: CGFloat = destinationRowHeight / 2
-        if let rowDropArea,
+        if let rowDropArea = rowDropArea.state,
            rowDropArea.dropLocation == .top {
             center = center + draggedRowHeight
         }
@@ -219,7 +234,7 @@ class DragAndDropSectionViewModel: ObservableObject {
     }
     
     private func resetEnvironment() {
-        rowDropArea = nil
+        rowDropArea.state = nil
         highlightedEmptySection = nil
         draggedItem = nil
     }

@@ -106,6 +106,11 @@ Pros:
 Cons:
 * You lose some of the out-of-the box functionality of the list: delete, move, edit.
 
+Notes:
+* The current solution uses 2 embedded ForEach loops to render sections and items. When doing it this way, there were some cases where the drop area spacer would stop working when hovering over an item (Meaning, the animation showing you where the item would be inserted did not run). To solve this problem, I had to wrap the `RowDropAreaViewState` in an observable class so that the individual row view (`DDItemRow`) could listen to changes. Another solution, which I have not implemented here, would be to flatten the view model structure so that you have just 1 ForEach loop that can switch between items and sections. This solution worked on a smaller example, but I have not updated this code to give it a try yet. However, it might be a better approach in the long run.
+
+ 
+
 ##### Drag and dropping using a VStack and Transferable
 
 This example explores adding drag and drop to a LazyVStack using Transferable instead of NSItemProvider. I updated the logic to drag and drop between 

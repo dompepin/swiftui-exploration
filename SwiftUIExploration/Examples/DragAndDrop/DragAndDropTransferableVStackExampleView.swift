@@ -66,23 +66,10 @@ struct DragAndDropTransferableVStackExampleView: View {
     }
     
     private func itemRow(item: DDItem, section: DDSection) -> some View {
-        VStack(spacing: 0) {
-            if isInsertAnimationEnabled {
-                rowDropArea(item: item, dropLocation: .top)
-            }
-            ExampleTitleRow(item.title)
-                .scaleEffect(!isInsertAnimationEnabled && item.id == viewModel.rowDropArea?.item.id && viewModel.rowDropArea?.dropLocation != RowDropLocation.none ? 1.03: 1)
-                .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
-                .swipeToDelete {
-                    viewModel.delete(item: item)
-                }
-                .padding(.bottom, Constant.Padding.Custom.rowSpacing8)
-                .getSize(viewModel.rowHeightBinding(for: item))
-            if isInsertAnimationEnabled {
-                rowDropArea(item: item, dropLocation: .bottom)
-            }
-        }
-        .contentShape(Rectangle())
+        DDItemRow(item: item, section: section,
+                  viewModel: viewModel,
+                  rowDropArea: $viewModel.rowDropArea,
+                  isInsertAnimationEnabled: isInsertAnimationEnabled)
         .draggable(item, preview: {
             ExampleTitleRow(item.title)
                 .dragPreview()
@@ -193,5 +180,45 @@ struct DragAndDropTransferableVStackExampleView: View {
 struct DragAndDropTransferableVStackExampleView_Previews: PreviewProvider {
     static var previews: some View {
         DragAndDropTransferableVStackExampleView()
+    }
+}
+
+
+fileprivate struct DDItemRow: View {
+    var item: DDItem
+    var section: DDSection
+    var viewModel: DragAndDropSectionViewModel
+    @Binding var rowDropArea: RowDropAreaViewState?
+    
+    var isInsertAnimationEnabled: Bool
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            if isInsertAnimationEnabled {
+                rowDropArea(item: item, dropLocation: .top)
+            }
+            ExampleTitleRow(item.title)
+                .scaleEffect(!isInsertAnimationEnabled && item.id == rowDropArea?.item.id && rowDropArea?.dropLocation != RowDropLocation.none ? 1.03: 1)
+                .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
+                .swipeToDelete {
+                    viewModel.delete(item: item)
+                }
+                .padding(.bottom, Constant.Padding.Custom.rowSpacing8)
+                .getSize(viewModel.rowHeightBinding(for: item))
+            if isInsertAnimationEnabled {
+                rowDropArea(item: item, dropLocation: .bottom)
+            }
+        }
+        .contentShape(Rectangle())
+    }
+    
+    @ViewBuilder
+    private func rowDropArea(item: DDItem, dropLocation: RowDropLocation) -> some View {
+        if let rowDropArea,
+           rowDropArea.item.id == item.id,
+           rowDropArea.dropLocation == dropLocation {
+            Color.clear
+                .frame(height: rowDropArea.height)
+        }
     }
 }

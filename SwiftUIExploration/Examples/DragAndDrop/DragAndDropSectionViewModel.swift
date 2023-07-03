@@ -32,7 +32,7 @@ struct RowDropAreaViewState {
 class DragAndDropSectionViewModel: ObservableObject {
     // MARK: Properties
     @Published private (set) var sections: [DDSection]
-    @Published private (set) var rowDropArea: RowDropAreaViewState? // Defines the spacer that will be inserted before or after a row to simulate making space to drop the dragged item.
+    @Published  var rowDropArea: RowDropAreaViewState? // Defines the spacer that will be inserted before or after a row to simulate making space to drop the dragged item.
     @Published var draggedItem: DDItem?
     @Published var highlightedEmptySection: DDSection? = nil
     private var rowSizes: [String:CGSize] = [:]

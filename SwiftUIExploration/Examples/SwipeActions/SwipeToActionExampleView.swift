@@ -1,5 +1,5 @@
 //
-//  SwipeToDeleteExampleView.swift
+//  SwipeToActionExampleView.swift
 //  SwiftUIExploration
 //
 //  Created by Dominic Pepin on 2023-06-20.
@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct SwipeToDeleteExampleView: View {
-    @State private var items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+struct SwipeToActionExampleView: View {
+    @State private var items = ["Swipe to delete Item 1", "Swipe to delete Item 2", "Swipe to delete Item 3", "Swipe to delete Item 4", "Swipe to delete Item 5"]
+    @State private var swipeToConfirmText = "Swipe to confirm"
+    @State private var isConfirmed = false
     
     var body: some View {
         ScrollView {
@@ -20,6 +22,12 @@ struct SwipeToDeleteExampleView: View {
                             items.removeAll { $0 == item }
                         }
                 }
+                ExampleTitleRow(swipeToConfirmText)
+                    .padding(.horizontal, Constant.Padding.Custom.outerEdge16)
+                    .swipeToConfirm($isConfirmed) {
+                        isConfirmed.toggle()
+                        print("Is Confirmed: \(isConfirmed)")
+                    }
             }
         }
         .navigationTitle("Swipe to delete")
@@ -29,6 +37,6 @@ struct SwipeToDeleteExampleView: View {
 
 struct SwipeToDeleteExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        SwipeToDeleteExampleView()
+        SwipeToActionExampleView()
     }
 }
